@@ -82,20 +82,18 @@
     <h1 class="welcome"><i>welcome</i></h1>
 
     <script>
+        alert("Enhance experience by entering fullscreen mode using the F11 key or Fn+F11 key combination.");
         document.querySelector('.go').addEventListener('click', function() {
             // Show welcome message and hide login form
             document.querySelector('.login').style.display = 'none';
             document.querySelector('.welcome').style.display = 'block';
     
-            // Set the window name to the user's input
+            // Set the name to the user's input
             window.name = document.querySelector('.name').value;
-    
-            // Alert before redirecting
-            alert("Enhance experience by entering fullscreen mode using the F11 key or Fn+F11 key combination.");
     
             // Redirect after a delay
             setTimeout(() => {
-                window.location.href = "https://adhvarun.github.io/Portfolio/desktop/desktop.html";
+                window.location.href = "https://adharvarun.github.io/Portfolio/desktop/desktop.html";
             }, 1000); // 1 second delay before redirecting
         });
     </script>    

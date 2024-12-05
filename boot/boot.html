@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOS Booting</title>
+    <style>
+        @font-face {
+            font-family: "3270";
+            src: url("./3270-Regular.otf") format("opentype");
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: "3270";
+            font-weight: 800;
+        }
+
+        p {
+            opacity: 0;
+            transition: opacity 0s;
+        }
+
+        .energystarlogo {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        
+        .bootgif {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        /* Popup styling */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .popup button {
+            background-color: #f1c40f;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .popup button:hover {
+            background-color: #e67e22;
+        }
+
+        /* Overlay background behind the popup */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="biostext">
+        <p class="bios1">Award Modular BIOS 04.51P6, An Energy Star Ally</p>
+        <p class="bios2">Copyright (C) 1984-1996, Award Software Inc.</p>
+        <p class="bios3">5DUX VER:1.0 1/7/96</p>
+        <p class="bios4">PENTIUM-S CPU at 133MHz</p>
+        <p class="bios5">Memory Test: 16384MB OK</p>
+        <p class="bios6">Initializing system devices...</p>
+        <p class="bios7">Initializing USB controllers... Done</p>
+        <p class="bios8">Checking primary storage devices...</p>
+        <p class="bios9">Press DEL to enter BIOS setup</p>
+        <p class="bios10">Boot device list</p>
+        <p class="bios11">Starting system...</p>
+        <p class="bios12">System Configuration: UEFI</p>
+        <p class="bios13">Secure Boot: Enabled</p>
+        <p class="bios14">Press F8 for advanced boot options</p>
+        <p class="bios15">Press F12 for boot menu</p>
+        <p class="bios16">Operating System: Windows XP Professional</p>
+        <p class="bios17">System startup complete</p>
+        <p class="bios18">System is ready to boot</p>
+
+        <img src="./energystar.png" class="energystarlogo" />
+    </div>
+
+    <img src="./Windows_XP_Professional_bootscreen.gif" class="bootgif" />
+
+    <!-- Fullscreen request popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <button id="startButton">Click to Start</button>
+    </div>
+
+    <script>
+        // Variable to control whether to show elements or not
+        let start = false; // Initially, it's false; user must click to start
+
+        // Show the popup to ask the user to start
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('popup').style.display = 'block';
+                document.getElementById('overlay').style.display = 'block';
+            }, 1000); // Adjust delay time as needed
+
+            // Set up the start button to start the sequence and request fullscreen
+            document.getElementById('startButton').addEventListener('click', function() {
+                start = true; // Set start to true when the button is clicked
+                document.getElementById('popup').style.display = 'none'; // Hide the popup
+                document.getElementById('overlay').style.display = 'none'; // Hide the overlay
+
+                // Request fullscreen when the button is clicked
+                requestFullScreen(document.body);
+
+                // Now check if start is true
+                if (start) { 
+                    showSequentialElements();
+                }
+            });
+        }
+
+        // Function to enter full screen
+        function requestFullScreen(element) {
+            var requestMethod = element.requestFullscreen || element.webkitRequestFullscreen || element.mozRequestFullScreen || element.msRequestFullscreen;
+            if (requestMethod) {
+                requestMethod.call(element);
+            } else if (typeof window.ActiveXObject !== "undefined") {
+                var wscript = new ActiveXObject("WScript.Shell");
+                if (wscript !== null) {
+                    wscript.SendKeys("{F11}");
+                }
+            }
+        }
+
+        function randomDelay(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function showElement(className, delay) {
+            setTimeout(() => {
+                document.querySelector(`.bios${className}`).style.opacity = 1;
+            }, delay);
+        }
+
+        function showSequentialElements() {
+            let delay = 0;
+
+            // Show elements 1 to 6 with random delays
+            [1, 2, 3, 4, 5, 6].forEach(num => {
+                let elementDelay = randomDelay(500, 1000);  // Random delay for each line
+                delay += elementDelay;  // Add delay to total delay
+                showElement(num, delay);  // Show element after the delay
+                console.log(`bios${num} delay: ${delay}`);
+            });
+
+            // Show 7 to 11 with random delays
+            [7, 8, 9, 10, 11].forEach(num => {
+                let elementDelay = randomDelay(500, 1000);  // Random delay for each line
+                delay += elementDelay;  // Add delay to total delay
+                showElement(num, delay);  // Show element after the delay
+                console.log(`bios${num} delay: ${delay}`);
+            });
+
+            // Show 12 after the calculated delay
+            setTimeout(() => {
+                let delay12 = randomDelay(2000, 4000);  // Random delay for 12
+                showElement(12, delay + delay12);  // Show 12 after 6 with delay
+                console.log(`bios12 delay: ${delay + delay12}`);
+                delay += delay12;  // Add delay to the total delay
+
+                // Wait for delay12 to finish, then show 13
+                let delay13 = randomDelay(2000, 4000);  // Random delay for 13
+                setTimeout(() => {
+                    showElement(13, delay + delay13);  // Show 13 after 12
+                    console.log(`bios13 delay: ${delay + delay13}`);
+                    delay += delay13;  // Add delay to the total delay
+
+                    // Show 14 to 18 with random delays
+                    [14, 15, 16, 17, 18].forEach(num => {
+                        let elementDelay = randomDelay(500, 1000);  // Random delay for each line
+                        delay += elementDelay;  // Add delay to total delay
+                        showElement(num, delay);  // Show element after the delay
+                        console.log(`bios${num} delay: ${delay}`);
+                    });
+
+                    // After the last element (18), hide the biostext div
+                    setTimeout(() => {
+                        document.querySelector('.biostext').style.display = 'none';
+                        console.log('biostext hidden');
+
+                        setTimeout(() => {
+                            document.querySelector('.bootgif').style.display = 'block';
+                            console.log('bootgif shown');
+
+                            setTimeout(() => {
+                                document.querySelector('.bootgif').style.display = 'none';
+                                console.log('bootgif removed');
+
+                                setTimeout(() => {
+                                    window.location.href = '/login/login.html';
+                                    console.log("redirecting to login.html");
+                                    requestFullScreen(document.body);  // Ensure fullscreen after redirect
+                                }, 1000)
+                            }, Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000);
+                        }, 1000);
+                    }, delay); // Delay is set after all elements are shown
+                }, delay13); // Wait for delay13 to finish before showing 13
+            }, delay); // Wait for previous elements to finish before showing 12
+        }
+    </script>
+</body>
+</html>

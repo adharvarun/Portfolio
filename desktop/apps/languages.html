@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Stack</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            justify-items: center;
+        }
+        .tech-item {
+            position: relative;
+            display: inline-block;
+        }
+        .tech-icon {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.2s ease;
+        }
+        .tech-icon:hover {
+            transform: scale(1.1);
+        }
+        .tech-item::after {
+            content: attr(title);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            white-space: nowrap;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s ease, visibility 0s 0.2s;
+            z-index: 10;
+        }
+        .tech-item:hover::after {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+<div class="tech-stack">
+    <a href="https://developer.android.com" target="_blank" rel="noreferrer" class="tech-item" title="Android">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original-wordmark.svg" alt="android" class="tech-icon"/>
+    </a>
+    <a href="https://angular.io" target="_blank" rel="noreferrer" class="tech-item" title="Angular">
+        <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular" class="tech-icon"/>
+    </a>
+    <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer" class="tech-item" title="Arduino">
+        <img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="arduino" class="tech-icon"/>
+    </a>
+    <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer" class="tech-item" title="Bash">
+        <img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="bash" class="tech-icon"/>
+    </a>
+    <a href="https://getbootstrap.com" target="_blank" rel="noreferrer" class="tech-item" title="Bootstrap">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" class="tech-icon"/>
+    </a>
+    <a href="https://circleci.com" target="_blank" rel="noreferrer" class="tech-item" title="CircleCI">
+        <img src="https://www.vectorlogo.zone/logos/circleci/circleci-icon.svg" alt="circleci" class="tech-icon"/>
+    </a>
+    <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer" class="tech-item" title="C++">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" class="tech-icon"/>
+    </a>
+    <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer" class="tech-item" title="CSS3">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" class="tech-icon"/>
+    </a>
+    <a href="https://www.djangoproject.com/" target="_blank" rel="noreferrer" class="tech-item" title="Django">
+        <img src="https://cdn.worldvectorlogo.com/logos/django.svg" alt="django" class="tech-icon"/>
+    </a>
+    <a href="https://www.docker.com/" target="_blank" rel="noreferrer" class="tech-item" title="Docker">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" class="tech-icon"/>
+    </a>
+    <a href="https://dotnet.microsoft.com/" target="_blank" rel="noreferrer" class="tech-item" title=".NET">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg" alt="dotnet" class="tech-icon"/>
+    </a>
+    <a href="https://www.electronjs.org" target="_blank" rel="noreferrer" class="tech-item" title="Electron">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/electron/electron-original.svg" alt="electron" class="tech-icon"/>
+    </a>
+    <a href="https://expressjs.com" target="_blank" rel="noreferrer" class="tech-item" title="Express">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" class="tech-icon"/>
+    </a>
+    <a href="https://www.figma.com/" target="_blank" rel="noreferrer" class="tech-item" title="Figma">
+        <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" class="tech-icon"/>
+    </a>
+    <a href="https://firebase.google.com/" target="_blank" rel="noreferrer" class="tech-item" title="Firebase">
+        <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" class="tech-icon"/>
+    </a>
+    <a href="https://flutter.dev" target="_blank" rel="noreferrer" class="tech-item" title="Flutter">
+        <img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="flutter" class="tech-icon"/>
+    </a>
+    <a href="https://git-scm.com/" target="_blank" rel="noreferrer" class="tech-item" title="Git">
+        <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" class="tech-icon"/>
+    </a>
+    <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer" class="tech-item" title="HTML5">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" class="tech-icon"/>
+    </a>
+    <a href="https://www.java.com" target="_blank" rel="noreferrer" class="tech-item" title="Java">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" class="tech-icon"/>
+    </a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer" class="tech-item" title="JavaScript">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" class="tech-icon"/>
+    </a>
+    <a href="https://www.linux.org/" target="_blank" rel="noreferrer" class="tech-item" title="Linux">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" class="tech-icon"/>
+    </a>
+    <a href="https://www.mysql.com/" target="_blank" rel="noreferrer" class="tech-item" title="MySQL">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" class="tech-icon"/>
+    </a>
+    <a href="https://nestjs.com/" target="_blank" rel="noreferrer" class="tech-item" title="NestJS">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/nestjs/nestjs-original.svg" alt="nestjs" class="tech-icon"/>
+    </a>
+    <a href="https://nextjs.org/" target="_blank" rel="noreferrer" class="tech-item" title="Next.js">
+        <img src="https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" alt="nextjs" class="tech-icon"/>
+    </a>
+    <a href="https://nodejs.org/" target="_blank" rel="noreferrer" class="tech-item" title="Node.js">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" class="tech-icon"/>
+    </a>
+    <a href="https://www.python.org/" target="_blank" rel="noreferrer" class="tech-item" title="Python">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" class="tech-icon"/>
+    </a>
+    <a href="https://www.reactjs.org/" target="_blank" rel="noreferrer" class="tech-item" title="React">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" class="tech-icon"/>
+    </a>
+    <a href="https://www.ruby-lang.org/" target="_blank" rel="noreferrer" class="tech-item" title="Ruby">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/ruby/ruby-original-wordmark.svg" alt="ruby" class="tech-icon"/>
+    </a>
+    <a href="https://www.sqlite.org/" target="_blank" rel="noreferrer" class="tech-item" title="SQLite">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original-wordmark.svg" alt="sqlite" class="tech-icon"/>
+    </a>
+    <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer" class="tech-item" title="TailwindCSS">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original-wordmark.svg" alt="tailwindcss" class="tech-icon"/>
+    </a>
+    <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer" class="tech-item" title="TypeScript">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" class="tech-icon"/>
+    </a>
+</div>
+
+</body>
+</html>

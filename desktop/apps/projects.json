@@ -1,0 +1,15 @@
+{
+    "projects": [
+      {
+        "title": "SmartStep",
+        "description": "Shoe made for Visually Impaired Individuals",
+        "link": "https://github.com/SmartStep-Inc"
+      },
+      {
+        "title": "SkyTracker CLI",
+        "description": "Command Line tool for accessing the Weather Details",
+        "link": "https://github.com/adharvarun/SkyTracker-CLI"
+      }
+    ]
+  }
+  

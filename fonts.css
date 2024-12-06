@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "3270";
+    src: url("./fonts/3270-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Tahoma";
+    src: url("./fonts/tahoma.otf") format("opentype");
+}

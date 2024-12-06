@@ -112,6 +112,7 @@
     </div>
 
     <script>
+        alert("Enhance experience by entering fullscreen mode using the F11 key or Fn+F11 key combination.");
         // Variable to control whether to show elements or not
         let start = false; // Initially, it's false; user must click to start
 
@@ -128,27 +129,11 @@
                 document.getElementById('popup').style.display = 'none'; // Hide the popup
                 document.getElementById('overlay').style.display = 'none'; // Hide the overlay
 
-                // Request fullscreen when the button is clicked
-                requestFullScreen(document.body);
-
                 // Now check if start is true
                 if (start) { 
                     showSequentialElements();
                 }
             });
-        }
-
-        // Function to enter full screen
-        function requestFullScreen(element) {
-            var requestMethod = element.requestFullscreen || element.webkitRequestFullscreen || element.mozRequestFullScreen || element.msRequestFullscreen;
-            if (requestMethod) {
-                requestMethod.call(element);
-            } else if (typeof window.ActiveXObject !== "undefined") {
-                var wscript = new ActiveXObject("WScript.Shell");
-                if (wscript !== null) {
-                    wscript.SendKeys("{F11}");
-                }
-            }
         }
 
         function randomDelay(min, max) {

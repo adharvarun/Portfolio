@@ -9,6 +9,11 @@
         "title": "SkyTracker CLI",
         "description": "Command Line tool for accessing the Weather Details",
         "link": "https://github.com/adharvarun/SkyTracker-CLI"
+      },
+      {
+        "title": "StatusCloud",
+        "description": "AI-Powered Flight Delay Predictor",
+        "link": "https://gitlab.com/adharvarunk/statuscloud"
       }
     ]
   }

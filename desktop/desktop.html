@@ -215,8 +215,9 @@
     <script>
         let start = false;
 
-        document.querySelector(".name").innerHTML = window.name;
-        
+        document.querySelector(".name").innerHTML = window.name[0].toUpperCase() + window.name.slice(1);
+
+
         function updateTime() {
             document.querySelector(".time").innerHTML = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: true});
         }

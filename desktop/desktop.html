@@ -215,7 +215,7 @@
     <script>
         let start = false;
 
-        document.querySelector(".name").innerHTML = window.name[0].toUpperCase() + window.name.slice(1);
+        document.querySelector(".name").innerHTML = window.name
 
 
         function updateTime() {
@@ -247,8 +247,8 @@
             document.body.appendChild(window);
             centerWindow(window);
             window.style.display = 'block';
-            window.style.width = '1000px';
-            window.style.height = '450px';
+            window.style.width = '1100px';
+            window.style.height = '550px';
 
             const closeButton = window.querySelector('.close-btn');
             closeButton.addEventListener('click', function () {

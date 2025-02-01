@@ -3,122 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="./fonts.css">
+    <title>Personal Website</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body.dark-mode {
+            background-color: #1a202c;
+            color: white;
         }
-
+        
         body {
-            font-family: 'Tahoma', sans-serif;
-            background: linear-gradient(135deg, #111, #333);
-            color: white;
+            font-family: "Montserrat", serif;
+        }
+
+        .nav-bar {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            padding: 20px;
-            flex-direction: column;
+            padding: 1rem 2rem;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 2rem;
+            max-width: 90%;
+            margin: 1rem auto;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
-        .box {
-            background: linear-gradient(135deg, #0d47a1, #1976d2);
-            padding: 50px;
-            text-align: center;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            position: relative;
-            max-width: 80%;
-            width: 600px;
-            transition: transform 0.3s ease;
-            animation: fadeIn 1s ease-out, moveUpDown 3s ease-in-out infinite;
+        body.dark-mode .nav-bar {
+            background-color: #2d3748;
         }
 
-        .box:hover {
-            animation-play-state: paused;
-            transform: translateY(-8px);
+        .icon-bar {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
         }
 
-        .box h1 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            font-weight: 600;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .ready {
-            background-color: #fff;
-            color: #1976d2;
-            font-size: 1.2rem;
-            padding: 18px 35px;
-            border: none;
-            border-radius: 5px;
+        .nav-icon {
+            width: 24px;
+            height: 24px;
             cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-            font-weight: bold;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+            color: #4a5568;
         }
 
-        .ready:hover {
-            background-color: #1976d2;
+        .nav-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-icon[data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
-            transform: scale(1.05);
+            padding: 4px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 10;
+            text-transform: capitalize;
         }
 
-        @keyframes moveUpDown {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .unavailable {
-            display: none;
-            background-color: #f44336;
-            color: white;
-            font-size: 1.5rem;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
-            width: 80%;
-            animation: fadeIn 1s ease-out;
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
         }
 
-        @media (max-width: 1024px) {
-            .box {
+        body.dark-mode .bg-white {
+            background-color: #2d3748;
+        }
+
+        button {
+            font-family: 'Montserrat', sans-serif;
+        }
+        @media (max-width: 768px) {
+            .profile-section button {
                 display: none;
             }
 
-            .unavailable {
-                display: block;
-            }
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
+            .nav-bar {
+                display: none;
             }
         }
     </style>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const darkModeButton = document.getElementById('dark-mode-button');
+            if (document.body.classList.contains('dark-mode')) {
+                darkModeButton.classList.remove('fa-sun');
+                darkModeButton.classList.add('fa-moon');
+            } else {
+                darkModeButton.classList.remove('fa-moon');
+                darkModeButton.classList.add('fa-sun');
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const icons = document.querySelectorAll('.nav-icon[data-tooltip]');
+            icons.forEach(icon => {
+                const tooltipText = icon.getAttribute('data-tooltip');
+                const formattedText = tooltipText.charAt(0).toUpperCase() + tooltipText.slice(1).toLowerCase();
+                icon.setAttribute('data-tooltip', formattedText);
+            });
+
+            fetch('./desktop/apps/projects.json')
+                .then(response => response.json())
+                .then(data => {
+                    const projectsSection = document.getElementById('projects');
+                    const projectsContainer = projectsSection.querySelector('.grid');
+                    projectsContainer.innerHTML = '';
+                    data.projects.forEach(project => {
+                        const projectElement = document.createElement('div');
+                        projectElement.className = 'bg-white shadow-md p-4 rounded-md';
+                        projectElement.innerHTML = `
+                            <h3 class="text-xl font-semibold">${project.title}</h3>
+                            <p>${project.description}</p>
+                        `;
+                        projectsContainer.appendChild(projectElement);
+                    });
+                });
+
+            fetch('./experience.json')
+                .then(response => response.json())
+                .then(data => {
+                    const experienceSection = document.getElementById('experience');
+                    const experienceContainer = experienceSection.querySelector('.grid');
+                    experienceContainer.innerHTML = '';
+                    data.experience.forEach(role => {
+                        const roleElement = document.createElement('div');
+                        roleElement.className = 'bg-white shadow-md p-4 rounded-md';
+                        roleElement.innerHTML = `
+                            <h3 class="text-xl font-semibold">${role.title}</h3>
+                            <p>${role.description}</p>
+                        `;
+                        experienceContainer.appendChild(roleElement);
+                    });
+                });
+        });
+    </script>
 </head>
-<body>
-    <div class="box">
-        <h1>Are you ready for the experience?</h1>
-        <button class="ready" onclick='window.location.href = "./boot/boot.html"'>Ready</button>
-    </div>
-    <h1 class="unavailable">Sorry, this Website is Currently Unavailable on Mobile Devices.</h1>
+<body class="font-montserrat bg-gray-50">
+    <nav class="nav-bar">
+        <div class="icon-bar">
+            <i class="fas fa-briefcase nav-icon" data-tooltip="projects" onclick="window.location.href='#projects'"></i>
+            <i class="fas fa-chart-line nav-icon" data-tooltip="experience" onclick="window.location.href='#experience'"></i>
+            <i class="fas fa-user nav-icon" data-tooltip="about" onclick="window.location.href='#about'"></i>
+            <i class="fas fa-envelope nav-icon" data-tooltip="email" onclick="window.location.href='mailto:adharvarun.10@gmail.com'"></i>
+        </div>
+        <div class="icon-bar">
+            <i class="fab fa-github nav-icon" data-tooltip="github" onclick="window.open('https://github.com/adharvarun', '_blank')"></i>
+            <i class="fab fa-linkedin nav-icon" data-tooltip="linkedin" onclick="window.open('https://linkedin.com/in/adharv-arun', '_blank')"></i>
+            <i class="fas fa-file-alt nav-icon" data-tooltip="resume" onclick="window.open('./resume.pdf', '_blank')"></i>
+            <i class="fas fa-link nav-icon" data-tooltip="links" onclick="window.open('./desktop/apps/links.html', '_blank')"></i>
+            <i id="dark-mode-button" class="fas fa-sun nav-icon" data-tooltip="theme switch" onclick="toggleDarkMode()"></i>
+        </div>
+    </nav>
+
+    <header class="profile-section">
+        <img src="Picture.jpg" alt="Adharv Arun" class="profile-image">
+        <div>   
+            <h1 class="text-4xl mt-4">Adharv Arun</h1>
+            <p>I’m a tech enthusiast with a passion for AI, hardware integration, and software development. I focus on creating innovative solutions to solve real-world problems.</p>
+            <button type="button" onclick="window.location.href='./boot/boot.html'" class="bg-green-500 text-white px-4 py-2 mt-4 ml-2 rounded">Windows XP Experience</button>
+        </div>
+    </header>
+
+    <main class="content-container px-4">
+        <section id="about" class="py-10">
+            <div class="bg-white shadow-md p-4 rounded-md">
+            <h2 class="text-2xl font-bold mb-4">About Me</h2>
+            <p>Hi, I'm Adharv, a passionate and driven tech enthusiast with a focus on innovation and problem-solving. With a strong foundation in software development, hardware design, and AI, I thrive in creating meaningful solutions that make a difference. From coding Python applications to integrating cutting-edge technologies, I’m always exploring new ways to push the boundaries of what's possible. When I’m not working on a project, you’ll find me learning something new or experimenting with the latest tech trends. Let’s connect and build something impactful together!</p>
+            </div>
+        </section>
+        <section id="projects" class="py-10">
+            <h2 class="text-2xl font-bold mb-4">Featured Work</h2>
+            <div class="grid grid-cols-1 gap-4"></div>
+        </section>
+
+        <section id="experience" class="py-10">
+            <h2 class="text-2xl font-bold mb-4">Experience</h2>
+            <div class="grid grid-cols-1 gap-4"></div>
+        </section>
+
+        <section id="education" class="py-10">
+            <h2 class="text-2xl font-bold mb-4">Education</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="bg-white shadow-md p-4 rounded-md">
+                    <h3 class="text-xl font-semibold">JSS Private School</h3>
+                    <p>2021-2028</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-4">
+        <p>Made by Adharv Arun</p>
+    </footer>
 </body>
 </html>

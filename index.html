@@ -9,14 +9,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tippy.js@6/dist/tippy.css" rel="stylesheet">
     <style>
+        body {
+            font-family: "Montserrat", serif;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
         body.dark-mode {
             background-color: #1a202c;
             color: white;
         }
-        
-        body {
-            font-family: "Montserrat", serif;
+
+        body.dark-mode .projectgh:hover {
+            color: white;
+        }
+
+        .profile-section, .content-container, .footer {
+            animation: float 3s ease-in-out infinite;
         }
 
         .nav-bar {
@@ -32,6 +42,7 @@
             position: sticky;
             top: 0;
             z-index: 10;
+            transition: background-color 0.5s;
         }
 
         body.dark-mode .nav-bar {
@@ -48,28 +59,13 @@
             width: 24px;
             height: 24px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.2s, color 0.2s;
             color: #4a5568;
         }
 
         .nav-icon:hover {
             transform: scale(1.1);
-        }
-
-        .nav-icon[data-tooltip]:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 4px 8px;
-            font-size: 12px;
-            border-radius: 4px;
-            white-space: nowrap;
-            z-index: 10;
-            text-transform: capitalize;
+            color: #2b6cb0;
         }
 
         .profile-section {
@@ -78,14 +74,18 @@
             align-items: center;
             gap: 1.5rem;
             padding: 2rem;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .profile-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+            width: 170px;
+            height: 170px;
+            border-radius: 20px;
+            object-fit: cover;
+            transition: transform 0.5s;
+            margin: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         body.dark-mode .bg-white {
@@ -94,7 +94,13 @@
 
         button {
             font-family: 'Montserrat', sans-serif;
+            transition: background-color 0.5s, transform 0.5s;
         }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
         @media (max-width: 768px) {
             .profile-section button {
                 display: none;
@@ -103,8 +109,37 @@
             .nav-bar {
                 display: none;
             }
+
+            .profile-image {
+                border-radius: 50%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .profile-section {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .profile-section img {
+                margin-right: 2rem;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
         }
     </style>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
     <script>
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
@@ -122,8 +157,16 @@
             const icons = document.querySelectorAll('.nav-icon[data-tooltip]');
             icons.forEach(icon => {
                 const tooltipText = icon.getAttribute('data-tooltip');
-                const formattedText = tooltipText.charAt(0).toUpperCase() + tooltipText.slice(1).toLowerCase();
-                icon.setAttribute('data-tooltip', formattedText);
+                icon.setAttribute('data-tooltip', tooltipText);
+            });
+
+            tippy('.nav-icon[data-tooltip]', {
+                content(reference) {
+                    return reference.getAttribute('data-tooltip');
+                },
+                placement: 'bottom',
+                arrow: true,
+                theme: 'light',
             });
 
             fetch('./desktop/apps/projects.json')
@@ -134,10 +177,13 @@
                     projectsContainer.innerHTML = '';
                     data.projects.forEach(project => {
                         const projectElement = document.createElement('div');
-                        projectElement.className = 'bg-white shadow-md p-4 rounded-md';
+                        projectElement.className = 'bg-white shadow-md p-4 rounded-md relative';
                         projectElement.innerHTML = `
                             <h3 class="text-xl font-semibold">${project.title}</h3>
                             <p>${project.description}</p>
+                            <a href="${project.link}" target="_blank" class="absolute top-1/2 right-2 transform -translate-y-1/2 text-gray-600 hover:text-black text-2xl mr-5 projectgh">
+                                <i class="fab fa-github"></i>
+                            </a>
                         `;
                         projectsContainer.appendChild(projectElement);
                     });
@@ -153,8 +199,15 @@
                         const roleElement = document.createElement('div');
                         roleElement.className = 'bg-white shadow-md p-4 rounded-md';
                         roleElement.innerHTML = `
-                            <h3 class="text-xl font-semibold">${role.title}</h3>
-                            <p>${role.description}</p>
+                            <div class="flex items-start gap-4">
+                                <img src="${role.logo}" alt="${role.title}" class="w-16 h-18 rounded-md">
+                                <div>
+                                    <h3 class="text-xl font-semibold">${role.title}</h3>
+                                    <p>${role.description}</p>
+                                    <p>${role.time}</p>
+                                    <p>${role.location}</p>
+                                </div>
+                            </div>
                         `;
                         experienceContainer.appendChild(roleElement);
                     });
@@ -165,17 +218,17 @@
 <body class="font-montserrat bg-gray-50">
     <nav class="nav-bar">
         <div class="icon-bar">
-            <i class="fas fa-briefcase nav-icon" data-tooltip="projects" onclick="window.location.href='#projects'"></i>
-            <i class="fas fa-chart-line nav-icon" data-tooltip="experience" onclick="window.location.href='#experience'"></i>
-            <i class="fas fa-user nav-icon" data-tooltip="about" onclick="window.location.href='#about'"></i>
-            <i class="fas fa-envelope nav-icon" data-tooltip="email" onclick="window.location.href='mailto:adharvarun.10@gmail.com'"></i>
+            <i class="fas fa-briefcase nav-icon" data-tooltip="Projects" onclick="window.location.href='#projects'"></i>
+            <i class="fas fa-chart-line nav-icon" data-tooltip="Experience" onclick="window.location.href='#experience'"></i>
+            <i class="fas fa-user nav-icon" data-tooltip="About" onclick="window.location.href='#about'"></i>
+            <i class="fas fa-envelope nav-icon" data-tooltip="Email" onclick="window.location.href='mailto:adharvarun.10@gmail.com'"></i>
         </div>
         <div class="icon-bar">
-            <i class="fab fa-github nav-icon" data-tooltip="github" onclick="window.open('https://github.com/adharvarun', '_blank')"></i>
-            <i class="fab fa-linkedin nav-icon" data-tooltip="linkedin" onclick="window.open('https://linkedin.com/in/adharv-arun', '_blank')"></i>
-            <i class="fas fa-file-alt nav-icon" data-tooltip="resume" onclick="window.open('./Resume.pdf', '_blank')"></i>
-            <i class="fas fa-link nav-icon" data-tooltip="links" onclick="window.open('./desktop/apps/links.html', '_blank')"></i>
-            <i id="dark-mode-button" class="fas fa-sun nav-icon" data-tooltip="theme switch" onclick="toggleDarkMode()"></i>
+            <i class="fab fa-github nav-icon" data-tooltip="GitHub" onclick="window.open('https://github.com/adharvarun', '_blank')"></i>
+            <i class="fab fa-linkedin nav-icon" data-tooltip="LinkedIn" onclick="window.open('https://linkedin.com/in/adharv-arun', '_blank')"></i>
+            <i class="fas fa-file-alt nav-icon" data-tooltip="Resume" onclick="window.open('./Resume.pdf', '_blank')"></i>
+            <i class="fas fa-link nav-icon" data-tooltip="Links" onclick="window.open('./desktop/apps/links.html', '_blank')"></i>
+            <i id="dark-mode-button" class="fas fa-sun nav-icon" data-tooltip="Theme Switch" onclick="toggleDarkMode()"></i>
         </div>
     </nav>
 
@@ -184,7 +237,7 @@
         <div>   
             <h1 class="text-4xl mt-4">Adharv Arun</h1>
             <p>I’m a tech enthusiast with a passion for AI, hardware integration, and software development. I focus on creating innovative solutions to solve real-world problems.</p>
-            <button type="button" onclick="window.location.href='./boot/boot.html'" class="bg-green-500 text-white px-4 py-2 mt-4 ml-2 rounded">Windows XP Experience</button>
+            <button type="button" onclick="window.location.href='./boot/boot.html'" class="bg-green-500 text-white px-4 py-2 mt-4 ml-2 rounded">Windows XP Style Portfolio Experience</button>
         </div>
     </header>
 
@@ -196,7 +249,7 @@
             </div>
         </section>
         <section id="projects" class="py-10">
-            <h2 class="text-2xl font-bold mb-4">Featured Work</h2>
+            <h2 class="text-2xl font-bold mb-4">Projects</h2>
             <div class="grid grid-cols-1 gap-4"></div>
         </section>
 
@@ -208,9 +261,12 @@
         <section id="education" class="py-10">
             <h2 class="text-2xl font-bold mb-4">Education</h2>
             <div class="grid grid-cols-1 gap-4">
-                <div class="bg-white shadow-md p-4 rounded-md">
-                    <h3 class="text-xl font-semibold">JSS Private School</h3>
-                    <p>2021-2028</p>
+                <div class="bg-white shadow-md p-4 rounded-md flex items-start gap-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcxFcOGW3dgsBHxvWr956MgzbOcXRfVFkMiA&s" alt="logo" class="w-16 h-18 rounded-md">
+                    <div>
+                        <h3 class="text-xl font-semibold">JSS Private School</h3>
+                        <p>2021-2028</p>
+                    </div>
                 </div>
             </div>
         </section>

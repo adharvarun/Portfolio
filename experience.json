@@ -2,13 +2,17 @@
     "experience": [
       {
         "title": "President of Media Committee (Middle School) at JSS Private School",
-        "description": "Shoe made for Visually Impaired Individuals",
-        "time": "Apr 2023 - Mar 2024"
+        "description": "Led a team to create media content for school events, boosting student engagement and enhancing communication through digital newsletters and promotional materials",
+        "time": "Apr 2023 - Mar 2024",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcxFcOGW3dgsBHxvWr956MgzbOcXRfVFkMiA&s",
+        "location": "Dubai, UAE"
       },
       {
         "title": "Vice President of Media Committee (Middle School) at JSS Private School",
-        "description": "Command Line tool for accessing the Weather Details",
-        "time": "Apr 2022 - Mar 2023"
+        "description": "Assisted in managing media projects, coordinated team efforts, and helped design promotional materials that increased event participation and student involvement",
+        "time": "Apr 2022 - Mar 2023",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcxFcOGW3dgsBHxvWr956MgzbOcXRfVFkMiA&s",
+        "location": "Dubai, UAE"
       }
     ]
   }

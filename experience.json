@@ -1,5 +1,12 @@
 {
     "experience": [
+       {
+          "title": "Freelance Programmer",
+          "description": "Develop AI assistants, RAG systems, and smart embedded solutions. Specialize in full-stack development, machine learning, and computer vision for innovative real-world applications.",
+          "time": "Oct 2019 - Present",
+          "logo": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+          "location": "Remote"
+      },
       {
         "title": "President of Media Committee (Middle School) at JSS Private School",
         "description": "Led a team to create media content for school events, boosting student engagement and enhancing communication through digital newsletters and promotional materials",

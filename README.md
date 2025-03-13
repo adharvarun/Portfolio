@@ -8,6 +8,6 @@ Welcome to my portfolio! Here you'll find a showcase of my work and skills.
 - Contact Info
 
 ## Technologies Used
-- HTML, CSS, JavaScript, React (or your specific tech stack)
+- HTML, CSS, JavaScript
 
 Thanks for visiting!

@@ -26,10 +26,6 @@
             color: white;
         }
 
-        .profile-section, .content-container, .footer {
-            animation: float 3s ease-in-out infinite;
-        }
-
         .nav-bar {
             display: flex;
             justify-content: space-between;
@@ -46,14 +42,30 @@
             transition: background-color 0.5s;
         }
 
-        body.dark-mode .nav-bar {
-            background-color: #2d3748;
+        .logo {
+            height: 40px;
+            transition: filter 0.5s;
         }
 
-        .icon-bar {
+        body.dark-mode .logo {
+            filter: invert(1);
+        }
+
+        .nav-bar-left, .nav-bar-right {
             display: flex;
             gap: 1.5rem;
             align-items: center;
+        }
+
+        .nav-bar-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+
+        body.dark-mode .nav-bar {
+            background-color: #2d3748;
         }
 
         .nav-icon {
@@ -126,18 +138,6 @@
                 margin-right: 2rem;
             }
         }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
     </style>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
@@ -198,13 +198,16 @@
 </head>
 <body class="font-montserrat bg-gray-50">
     <nav class="nav-bar">
-        <div class="icon-bar">
+        <div class="nav-bar-left">
             <i class="fas fa-briefcase nav-icon" data-tooltip="Projects" onclick="window.location.href='#projects'"></i>
             <i class="fas fa-chart-line nav-icon" data-tooltip="Experience" onclick="window.location.href='#experience'"></i>
             <i class="fas fa-user nav-icon" data-tooltip="About" onclick="window.location.href='#about'"></i>
             <i class="fas fa-envelope nav-icon" data-tooltip="Email" onclick="window.location.href='mailto:adharvarun.10@gmail.com'"></i>
         </div>
-        <div class="icon-bar">
+        <div class="nav-bar-center">
+            <img src="./logo/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="nav-bar-right">
             <i class="fab fa-github nav-icon" data-tooltip="GitHub" onclick="window.open('https://github.com/adharvarun', '_blank')"></i>
             <i class="fab fa-linkedin nav-icon" data-tooltip="LinkedIn" onclick="window.open('https://linkedin.com/in/adharv-arun', '_blank')"></i>
             <i class="fas fa-file-alt nav-icon" data-tooltip="Resume" onclick="window.open('./Resume.pdf', '_blank')"></i>
@@ -217,7 +220,7 @@
         <img src="Picture.jpg" alt="Adharv Arun" class="profile-image">
         <div>   
             <h1 class="text-4xl mt-4">Adharv Arun</h1>
-            <p>I’m a tech enthusiast with a passion for AI, hardware integration, and software development. I focus on creating innovative solutions to solve real-world problems.</p>
+            <p>Hey! I'm a tech enthusiast with a passion for AI, hardware integration, and software development. I focus on creating innovative solutions to solve real-world problems.</p>
             <button type="button" onclick="window.location.href='./boot/boot.html'" class="bg-green-500 text-white px-4 py-2 mt-4 ml-2 rounded">Windows XP Style Portfolio Experience</button>
         </div>
     </header>
@@ -226,7 +229,7 @@
         <section id="about" class="py-10">
             <div class="bg-white shadow-md p-4 rounded-md">
             <h2 class="text-2xl font-bold mb-4">About Me</h2>
-            <p>Hi, I'm Adharv, a passionate and driven tech enthusiast with a focus on innovation and problem-solving. With a strong foundation in software development, hardware design, and AI, I thrive in creating meaningful solutions that make a difference. From coding Python applications to integrating cutting-edge technologies, I’m always exploring new ways to push the boundaries of what's possible. When I’m not working on a project, you’ll find me learning something new or experimenting with the latest tech trends. Let’s connect and build something impactful together!</p>
+            <p>Hi, I'm Adharv, a passionate and driven tech enthusiast with a focus on innovation and problem-solving. With a strong foundation in software development, hardware design, and AI, I thrive in creating meaningful solutions that make a difference. From coding Python applications to integrating cutting-edge technologies, I'm always exploring new ways to push the boundaries of what's possible. When I'm not working on a project, you'll find me learning something new or experimenting with the latest tech trends. Let's connect and build something impactful together!</p>
             </div>
         </section>
         <section id="projects" class="py-10">

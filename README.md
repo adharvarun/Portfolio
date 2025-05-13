@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Adharv Arun's Portfolio
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js 14, showcasing my work, skills, and experience. The website features smooth animations, a clean design, and a great user experience.
 
-First, run the development server:
+## 🚀 Features
 
+- **Modern Design**: Clean and professional layout with smooth animations
+- **Responsive**: Fully responsive design that works on all devices
+- **Dynamic Content**: Content managed through Sanity CMS
+- **Performance Optimized**: Built with Next.js for optimal performance
+- **Interactive Elements**: Smooth scroll animations and interactive components
+- **Blog Integration**: Built-in blog functionality with MDX support
+- **Contact Form**: Integrated contact form for easy communication
+
+## 🛠️ Technologies Used
+
+- **Framework**: Next.js 14
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **CMS**: Sanity
+- **Content**: MDX
+- **Deployment**: Vercel
+- **Font**: Inter (Google Fonts)
+
+## 📦 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/portfolio.git
+cd portfolio
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables:
+Create a `.env.local` file in the root directory and add your Sanity credentials:
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+```
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+portfolio/
+├── src/
+│   ├── app/              # Next.js app directory
+│   ├── components/       # React components
+│   ├── sanity/          # Sanity CMS configuration
+│   └── styles/          # Global styles
+├── public/              # Static assets
+└── content/            # Blog content
+```
 
-## Learn More
+## 🚀 Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The site is deployed on Vercel. Any push to the main branch will trigger a new deployment.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is open source and available under the [MIT License](LICENSE).
 
-## Deploy on Vercel
+## 👥 Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Feel free to reach out to me through:
+- Email: [your-email@example.com]
+- LinkedIn: [Your LinkedIn Profile]
+- Twitter: [@YourTwitterHandle]
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Made with ❤️ by Adharv Arun

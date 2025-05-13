@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { client } from '@/sanity/lib/client';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
   const [about, setAbout] = useState<any>(null);
@@ -42,30 +43,40 @@ export default function Hero() {
 
   return (
     <section className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto mt-16 mb-20 px-4 gap-8">
-      <div className="h-[15rem] flex items-center overflow-hidden">
+      <motion.div 
+        className="h-[15rem] flex items-center overflow-hidden"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <h1 className="text-[clamp(2.5rem,8vw,6rem)] leading-[1.05] font-bold text-black">
           {about?.titles ? `${about.titles[index].substring(0, subIndex)}${subIndex < about.titles[index].length ? '|' : ''}` : 'Loading...'}
         </h1>
-      </div>
-      <div className="flex flex-col items-center bg-white rounded-2xl shadow p-6 w-full max-w-xs">
-          <div className="w-32 h-32 rounded-xl overflow-hidden mb-4">
-            <Image
-              src="/profile.jpg"
-              alt="Adharv Arun"
-              width={128}
-              height={128}
-              className="object-cover w-full h-full"
-            />
-          </div>
+      </motion.div>
+      <motion.div 
+        className="flex flex-col items-center bg-white rounded-2xl shadow p-6 w-full max-w-xs"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+      >
+        <div className="w-32 h-32 rounded-xl overflow-hidden mb-4">
+          <Image
+            src="/profile.jpg"
+            alt="Adharv Arun"
+            width={128}
+            height={128}
+            className="object-cover w-full h-full"
+          />
+        </div>
         <div className="text-center text-gray-600 max-h-[10rem] overflow-y-auto">
-          <p className="text-lg font-semibold mb-2">Hey There 👋! I'm Adharv</p>
+          <p className="text-lg font-semibold mb-2">Hey There 👋! I&apos;m Adharv</p>
           {about?.shortDescription ? (
             <p>{about.shortDescription}</p>
           ) : (
             <p>Loading...</p>
           )}          
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

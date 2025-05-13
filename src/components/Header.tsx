@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaLink } from 'react-icons/fa6';
 
 export default function Header() {
   return (
@@ -17,7 +18,11 @@ export default function Header() {
           <li><Link href="#blog">Blog</Link></li>
           <li><Link href="#contact">Contact</Link></li>
         </ul>
-        <div></div>
+        <div>
+          <Link href="/links" className="hidden md:flex items-center gap-2 rounded-full text-lg">
+            <FaLink />
+          </Link>
+        </div>
       </nav>
     </header>
   );

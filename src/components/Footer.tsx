@@ -2,12 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import * as FaIcons from "react-icons/fa";
 import { client } from '@/sanity/lib/client';
+import ChatButton from "@/components/ChatBot";
 
 const contacts = await client.fetch(`*[_type == "contact"]`);
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-12 px-4">
+    <footer className="bg-black text-white py-12 px-4 relative">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col items-center md:items-start gap-2">
           <div className="flex items-center gap-2 font-bold text-xl">
@@ -46,10 +47,12 @@ export default function Footer() {
         </div>
         <div className="text-gray-400 text-sm text-center md:text-right">
           <div>adharvarun.10@gmail.com</div>
-          <div>Dubai, UAE</div>
+          <div>Based in Dubai, UAE</div>
+          <div>25.2048°N 55.2708°E</div>
         </div>
       </div>
-      <div className="text-center text-gray-600 text-xs mt-8">© {new Date().getFullYear()} All rights reserved • Adharv Arun</div>
+      <div className="text-center text-gray-600 text-xs mt-8">Made with ❤️ by Adharv Arun &middot; {new Date().getFullYear()}</div>
+      <ChatButton />
     </footer>
   );
-} 
+}

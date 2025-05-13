@@ -1,4 +1,7 @@
+'use client';
+
 import { FaRobot, FaCode, FaCloud, FaChartLine } from 'react-icons/fa';
+import ScrollAnimation from './ScrollAnimation';
 
 const services = [
   {
@@ -26,15 +29,19 @@ const services = [
 export default function Services() {
   return (
     <section id="services" className="max-w-6xl mx-auto mb-20 px-4">
-      <span className="inline-block bg-gray-100 text-black px-4 py-1 rounded-full text-sm font-medium mb-4">Services</span>
-      <h2 className="text-3xl md:text-4xl font-bold text-black mb-10">A Comprehensive look at what I offer and how I deliver</h2>
+      <ScrollAnimation direction="down">
+        <span className="inline-block bg-gray-100 text-black px-4 py-1 rounded-full text-sm font-medium mb-4">Services</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-black mb-10">A Comprehensive look at what I offer and how I deliver</h2>
+      </ScrollAnimation>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map((service, i) => (
-          <div key={i} className={`rounded-2xl bg-white p-6 shadow flex flex-col gap-4 border border-gray-200 hover:scale-105 transition-all duration-300`}>
-            <div>{service.icon}</div> 
-            <div className="font-semibold text-lg text-black">{service.title}</div>
-            <div className="text-gray-500 text-sm">{service.desc}</div>
-          </div>
+          <ScrollAnimation key={i} direction="down" delay={0.1 * i}>
+            <div className="rounded-2xl bg-white p-6 shadow flex flex-col gap-4 border border-gray-200 hover:scale-105 transition-all duration-300 h-full">
+              <div>{service.icon}</div> 
+              <div className="font-semibold text-lg text-black">{service.title}</div>
+              <div className="text-gray-500 text-sm">{service.desc}</div>
+            </div>
+          </ScrollAnimation>
         ))}
       </div>
     </section>

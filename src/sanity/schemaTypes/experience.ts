@@ -16,9 +16,16 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'date',
-      title: 'Date',
+      name: 'startYear',
+      title: 'Start Year',
+      type: 'number',
+      validation: Rule => Rule.required().min(1900).max(new Date().getFullYear() + 10),
+    }),
+    defineField({
+      name: 'endYear',
+      title: 'End Year',
       type: 'string',
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'description',
@@ -26,4 +33,4 @@ export default defineType({
       type: 'text',
     }),
   ],
-}) 
+})

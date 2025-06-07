@@ -77,9 +77,8 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 👥 Contact
 
 Feel free to reach out to me through:
-- Email: [your-email@example.com]
-- LinkedIn: [Your LinkedIn Profile]
-- Twitter: [@YourTwitterHandle]
+- Email: adharvarun.10@gmail.com
+- LinkedIn: Adharv Arun
 
 ---
 

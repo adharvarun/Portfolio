@@ -10,9 +10,9 @@ export default async function AboutMe() {
 
   let repoCount = 0;
   try {
-    const res = await fetch(`https://api.github.com/users/${username}/repos`);
+    const res = await fetch(`https://api.github.com/users/${username}`);
     const data = await res.json();
-    repoCount = Array.isArray(data) ? data.length : 0;
+    repoCount = data["public_repos"];
   } catch {
     repoCount = -1;
   }
@@ -22,7 +22,7 @@ export default async function AboutMe() {
       <div className="flex-1 w-full">
         <span className="inline-block bg-gray-100 text-black px-4 py-1 rounded-full text-sm font-medium mb-4">About Me</span>
         <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-          <div className="flex">
+          <div className="hidden [@media(min-width:1027px)]:flex">
             {about?.titles?.map((title: string, index: number) => (
               <span key={index} className="inline-block text-sm text-gray-700 bg-gray-200 px-2 py-1 rounded-full mr-2">
                 {title}
@@ -60,11 +60,11 @@ export default async function AboutMe() {
           />
         </div>
         <div className="flex gap-8 mt-6">
-          <div className="text-center border border-gray-300 rounded-lg p-4 w-30 h-30">
+          <div className="text-center border border-gray-300 rounded-lg p-4 w-30 h-30 hover:scale-105 transition-all duration-300">
             <div className="text-3xl font-bold text-black">{repoCount}</div>
             <div className="text-gray-500 text-sm mt-2">Projects</div>
           </div>
-          <div className="text-center border border-gray-300 rounded-lg p-4 w-30 h-30">
+          <div className="text-center border border-gray-300 rounded-lg p-4 w-30 h-30 hover:scale-105 transition-all duration-300">
             <div className="text-3xl font-bold text-black">6+</div>
             <div className="text-gray-500 text-sm">Years <br /> Experience</div>
           </div>

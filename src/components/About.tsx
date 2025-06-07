@@ -38,7 +38,7 @@ export default function About() {
             <div className="space-y-6">
               <div>
                 <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                  Hi 👋, I'm Adharv
+                  Hi 👋, I&apos;m Adharv
                 </h1>
                 <h2 className="text-xl text-gray-600 dark:text-gray-400">
                   AI Engineer, Software Engineer, Student at JSS Private School
@@ -46,7 +46,7 @@ export default function About() {
               </div>
 
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                I'm a software engineer and AI enthusiast with 6+ years of experience building innovative solutions in AI, robotics, and full-stack development. I love turning ideas into real-world impact through code, design, and intelligent systems.
+                I&apos;m a software engineer and AI enthusiast with 6+ years of experience building innovative solutions in AI, robotics, and full-stack development. I love turning ideas into real-world impact through code, design, and intelligent systems.
               </p>
 
               <ScrollAnimation delay={0.2}>

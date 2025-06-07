@@ -15,7 +15,7 @@ export default function Testimonial() {
           </ScrollAnimation>
           <ScrollAnimation direction="down" delay={0.2}>
             <blockquote className="text-xl md:text-2xl font-medium text-black mb-6">
-              "Innovation distinguishes between a leader and a follower"
+              &quot;Innovation distinguishes between a leader and a follower&quot;
             </blockquote>
           </ScrollAnimation>
           <ScrollAnimation direction="down" delay={0.3}>

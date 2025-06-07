@@ -22,7 +22,7 @@ export default function ImageSlider({ images }: ImageSliderProps) {
   };
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative w-full h-full overflow-hidden rounded-xl">
       <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {images.map((image, index) => (
           <Image
@@ -31,7 +31,7 @@ export default function ImageSlider({ images }: ImageSliderProps) {
             alt={image.alt || `Slide ${index + 1}`}
             width={800}
             height={600}
-            className="w-[400px] h-[300px] object-cover rounded-xl"
+            className="w-[400px] h-[300px] object-cover"
           />
         ))}
       </div>

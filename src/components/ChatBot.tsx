@@ -44,42 +44,31 @@ export default function ChatBot() {
 
   const toggleChat = () => setIsOpen((prev) => !prev);
 
+  const [placeholder, setPlaceholder] = useState("Ask Thor AI ⚡");
+
   useEffect(() => {
-    const sendInitialMessage = async () => {
-      const initialMessage: Message = { role: "assistant", content: "Hey there! I'm Thor!" };
-      const updatedMessages = [...messages, initialMessage, { role: "assistant", content: "Ask me Something!" }];
-      setMessages(updatedMessages);
+    const placeholders = [
+      "Ask Thor AI ⚡", 
+      "Unleash Thor's Wisdom ⚡", 
+      "Thunderous Insights ⚡", 
+      "Ask the Thunder God ⚡"
+    ];
 
-      try {
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-        const result = await model.generateContentStream(buildPrompt(updatedMessages));
-        const stream = result.stream;
-
-        let aiResponse = "";
-
-        for await (const chunk of stream) {
-          const chunkText = chunk.text();
-          if (!chunkText) continue;
-          aiResponse += chunkText;
-          setMessages((prev) => {
-            const arr = [...prev];
-            arr[arr.length - 1] = { role: "assistant", content: aiResponse };
-            return arr;
-          });
-        }
-      } catch (err) {
-        setMessages((prev) => {
-          const arr = [...prev];
-          arr[arr.length - 1] = { role: "assistant", content: "Oops! Something went wrong while fetching my response." };
-          return arr;
-        });
-      } finally {
-        setIsLoading(false);
-      }
+    const changePlaceholder = () => {
+      const randomIndex = Math.floor(Math.random() * placeholders.length);
+      setPlaceholder(placeholders[randomIndex]);
     };
 
-    sendInitialMessage();
+    const interval = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
+
+    const intervalId = setInterval(changePlaceholder, interval);
+
+    return () => clearInterval(intervalId);
   }, []);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isOpen]);
 
   const buildPrompt = (msgs: Message[]) => ({
     contents: [
@@ -159,7 +148,7 @@ export default function ChatBot() {
   };
 
   return (
-    <div className="hidden fixed bottom-4 right-4 z-50 [@media(min-width:727px)]:block">
+    <div className="fixed bottom-4 right-4 z-50">
       <button
         onClick={toggleChat}
         className="bg-black text-white p-4 rounded-full shadow-lg flex gap-2 hover:scale-105 transition-transform duration-200 hover:shadow-3xl hover:cursor-pointer">
@@ -172,7 +161,9 @@ export default function ChatBot() {
               <div key={idx} className={`w-full flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
                   className={`max-w-[80%] p-3 rounded-xl text-sm shadow-md break-words whitespace-pre-wrap ${
-                    msg.role === "user" ? "bg-blue-600 text-white rounded-br-none" : "bg-gray-800 text-white rounded-bl-none"
+                    msg.role === "user"
+                      ? "bg-blue-600 text-white rounded-br-none"
+                      : "bg-gray-800 text-white rounded-bl-none"
                   }`}
                 >
                   {msg.role === "user" ? (
@@ -194,7 +185,7 @@ export default function ChatBot() {
                 value={input} 
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                placeholder="Ask Thor AI..."
+                placeholder={placeholder}
                 className="flex-1 rounded-lg bg-[#232329] px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                 disabled={isLoading}
               />

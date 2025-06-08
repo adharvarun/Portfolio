@@ -59,7 +59,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
       >
-        <div className="w-32 h-32 rounded-xl overflow-hidden mb-4">
+        <div className="w-32 h-32 rounded-xl overflow-hidden mb-4 transition-transform duration-300 hover:scale-105">
           <Image
             src="/profile.jpg"
             alt="Adharv Arun"

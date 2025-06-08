@@ -1,6 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 
-export default async function Blog() {
+export default function Blog() {
   return (
     <section id="projects" className="max-w-6xl mx-auto mb-20 px-4">
       <span className="inline-block bg-gray-100 text-black px-4 py-1 rounded-full text-sm font-medium mb-4">Blog</span>

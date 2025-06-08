@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { FaGithub, FaLink } from 'react-icons/fa';
 import ScrollAnimation from './ScrollAnimation';
 import { useEffect, useState } from 'react';
+import { FaArrowRight } from 'react-icons/fa6';
 
 export default function Portfolio() {
   const [projects, setProjects] = useState<any[]>([]);
@@ -81,8 +82,8 @@ export default function Portfolio() {
 
       <ScrollAnimation direction="down" delay={0.6}>
         <div className="text-center mt-10">
-          <Link href="/projects" className="text-blue-600 hover:text-blue-800 font-medium text-lg">
-            View All Projects →
+          <Link href="/projects" className="text-blue-600 hover:text-blue-800 font-medium text-lg flex items-center justify-center gap-2">
+            View All Projects <FaArrowRight />
           </Link>
         </div>
       </ScrollAnimation>

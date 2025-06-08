@@ -7,12 +7,14 @@ interface ScrollAnimationProps {
   children: ReactNode;
   delay?: number;
   direction?: 'up' | 'down' | 'left' | 'right';
+  className?: string;
 }
 
 export default function ScrollAnimation({ 
   children, 
   delay = 0, 
-  direction = 'up' 
+  direction = 'up',
+  className = ''
 }: ScrollAnimationProps) {
   const directions = {
     up: { initial: { y: 50, opacity: 0 }, animate: { y: 0, opacity: 1 } },
@@ -23,6 +25,7 @@ export default function ScrollAnimation({
 
   return (
     <motion.div
+      className={className}
       initial={directions[direction].initial}
       whileInView={directions[direction].animate}
       viewport={{ once: true, margin: "-100px" }}

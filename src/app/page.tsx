@@ -35,10 +35,10 @@ export default function Home() {
       <AboutMe />
       <Services />
       <Experience />
+      <ResumeSection />
       <Portfolio />
       <Blog />
       <Testimonial />
-      <ResumeSection />
       <ContactCTA />
       <Footer />
     </main>

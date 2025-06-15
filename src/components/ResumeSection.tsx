@@ -6,7 +6,7 @@ export default function ResumeSection() {
       <span className="inline-block bg-gray-100 text-black px-4 py-1 rounded-full text-sm font-medium mb-4">Resume</span>
       <h2 className="text-3xl md:text-4xl font-bold text-black mb-10">View my complete professional journey</h2>
       <div>
-        <p className="text-gray-600 mb-8 max-w-xl">
+        <p className="text-gray-600 mb-8">
           Want to know more about my experience, education, and skills? View my full resume below.
         </p>
         <Link

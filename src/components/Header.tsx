@@ -40,7 +40,7 @@ export default function Header() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
         >
-          <Link href="/links" className="hidden md:flex items-center gap-2 rounded-full text-lg">
+          <Link href="/links" className="flex items-center gap-2 rounded-full text-lg">
             <FaLink />
           </Link>
         </motion.div>

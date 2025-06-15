@@ -59,13 +59,16 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
       >
-        <div className="w-32 h-32 rounded-xl overflow-hidden mb-4 transition-transform duration-300 hover:scale-105">
+        <div className="w-32 h-32 rounded-xl overflow-hidden mb-4 transition-transform duration-300 hover:scale-105 shadow-sm hover:shadow-md">
           <Image
             src="/profile.jpg"
-            alt="Adharv Arun"
+            alt="Adharv Arun - AI Engineer and Software Developer"
             width={128}
             height={128}
             className="object-cover w-full h-full"
+            priority
+            loading="eager"
+            quality={90}
           />
         </div>
         <div className="text-center text-gray-600 max-h-[10rem] overflow-y-auto">

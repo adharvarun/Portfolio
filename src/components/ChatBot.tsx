@@ -128,18 +128,29 @@ export default function ChatBot() {
       }
     } catch (err) {
       console.error('Chat error:', err);
+      const errorMessages = [
+        "Uh-oh! Thor's laptop just crashed! ⚡️ But don’t worry, I’ll reboot faster than you can say 'Asgard!' Try again in a moment!",
+        "Oops! Looks like Thor’s laptop got a little too excited and tripped over its wires! ⚡️ Give me a second to untangle things!",
+        "Yikes! Thor's laptop just went on strike! ⚡️ It’ll be back to full power in no time. Hang tight!",
+        "Thor’s laptop just went on a coffee break! ☕⚡️ It’ll be back before you know it. Try again soon!",
+        "Oh no, Thor’s laptop hit a bug! 🐞⚡️ It’s squashing it now. Please wait a moment!",
+      ];
+      
       setMessages((prev) => {
         const arr = [...prev];
+        const randomIndex = Math.floor(Math.random() * errorMessages.length);
+        const randomErrorMessage = errorMessages[randomIndex];
+      
         if (arr[arr.length - 1]?.role === "assistant") {
           arr[arr.length - 1] = { 
             role: "assistant", 
-            content: "I apologize, but I'm having trouble connecting to my knowledge base right now. Could you try asking your question again in a moment? ⚡",
+            content: randomErrorMessage, 
             isError: true
           };
         } else {
           arr.push({ 
             role: "assistant", 
-            content: "I apologize, but I'm having trouble connecting to my knowledge base right now. Could you try asking your question again in a moment? ⚡",
+            content: randomErrorMessage, 
             isError: true
           });
         }

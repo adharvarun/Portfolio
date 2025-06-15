@@ -5,7 +5,7 @@ import ScrollAnimation from './ScrollAnimation';
 
 export default function Testimonial() {
   return (
-    <section className="max-w-4xl mx-auto mb-20 px-4">
+    <section className="max-w-4xl mx-auto mb-20 px-4 transition-transform duration-300 hover:scale-105">
       <ScrollAnimation direction="down">
         <div className="bg-white rounded-2xl shadow p-10 flex flex-col items-center text-center border border-gray-200">
           <ScrollAnimation direction="down" delay={0.1}>

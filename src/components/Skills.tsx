@@ -75,7 +75,7 @@ export default function Skills() {
         })}
         <ScrollAnimation direction="down" delay={0.05 * skills.length}>
           <span
-            className="flex items-center gap-2 bg-black text-white px-3 py-1 rounded-lg font-medium text-base shadow hover:scale-105 transition-transform duration-150"
+            className="flex items-center gap-2 bg-black text-white px-3 py-1 rounded-lg font-medium text-base shadow hover:scale-105 transition-transform duration-150 hover:cursor-pointer"
           >
             <Plus className="w-3 h-3" />
             And More

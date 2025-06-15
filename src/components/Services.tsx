@@ -33,7 +33,7 @@ export default function Services() {
         <span className="inline-block bg-gray-100 text-black px-4 py-1 rounded-full text-sm font-medium mb-4">Services</span>
         <h2 className="text-3xl md:text-4xl font-bold text-black mb-10">A Comprehensive look at what I offer and how I deliver</h2>
       </ScrollAnimation>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 hover:cursor-default">
         {services.map((service, i) => (
           <ScrollAnimation key={i} direction="down" delay={0.1 * i}>
             <div className="rounded-2xl bg-white p-6 shadow flex flex-col gap-4 border border-gray-200 hover:scale-105 transition-all duration-300 h-full">

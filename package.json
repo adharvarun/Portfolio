@@ -20,6 +20,8 @@
     "lucide-react": "^0.510.0",
     "next": "15.3.2",
     "next-sanity": "^9.11.0",
+    "next-turnstile": "^1.0.5",
+    "node-cache": "^5.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
@@ -27,7 +29,8 @@
     "remark-gfm": "^4.0.1",
     "sanity": "^3.88.2",
     "styled-components": "^6.1.18",
-    "tailwind-scrollbar": "^4.0.2"
+    "tailwind-scrollbar": "^4.0.2",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

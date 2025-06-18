@@ -28,7 +28,7 @@ export default function Error({
         {process.env.NODE_ENV === 'development' && (
           <div className="mt-6 p-6 bg-gray-50 rounded-lg shadow-inner">
             <h2 className="text-xl font-semibold text-red-400 mb-4">
-              Error Details (Don't Panic!): 🛸
+              Error Details (Don&apos;t Panic!): 🛸
             </h2>
             <pre className="text-sm text-gray-700 whitespace-pre-wrap overflow-x-auto">
               {error.message}

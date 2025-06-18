@@ -6,6 +6,7 @@ import * as FaIcons from 'react-icons/fa';
 import Skills from './Skills';
 import { useEffect, useState } from 'react';
 import ScrollAnimation from './ScrollAnimation';
+import AnimatedCounter from './AnimatedCounter';
 
 export default function AboutMe() {
   const [about, setAbout] = useState<any>(null);
@@ -141,7 +142,7 @@ export default function AboutMe() {
           <div className="flex gap-8 justify-center mt-6">
             <ScrollAnimation direction="up" delay={0.2}>
               <div className="text-center border border-gray-300 rounded-lg p-4 w-30 h-30 hover:scale-105 transition-all duration-300">
-                <div className="text-3xl font-bold text-black">{repoCount}</div>
+                  <div className="text-3xl font-bold text-black">{repoCount}</div>
                 <div className="text-gray-500 text-sm mt-2">Projects</div>
               </div>
             </ScrollAnimation>

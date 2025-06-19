@@ -94,7 +94,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="https://raw.githubusercontent.com/adharvarun/adharvarun/refs/heads/main/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="https://raw.githubusercontent.com/adharvarun/adharvarun/refs/heads/main/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" />

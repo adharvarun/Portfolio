@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 interface ImageSliderProps {
@@ -11,52 +11,48 @@ interface ImageSliderProps {
 export default function ImageSlider({ images }: ImageSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  }, [images.length]);
+  const goToPrev = () => {
+    setCurrentIndex((i) => (i === 0 ? images.length - 1 : i - 1));
+  };
 
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  }, [images.length]);
+  const goToNext = () => {
+    setCurrentIndex((i) => (i === images.length - 1 ? 0 : i + 1));
+  };
+
+  if (!images.length) return null;
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto overflow-hidden rounded-xl">
+    <div className="relative w-full h-full overflow-hidden rounded-xl">
       <div
         className="flex transition-transform duration-500 ease-in-out"
-        style={{
-          width: `${images.length * 100}%`,
-          transform: `translateX(-${(100 / images.length) * currentIndex}%)`,
-        }}
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {images.map((image, index) => (
-          <div key={index} className="w-full flex-shrink-0">
-            <Image
-              src={image.src}
-              alt={image.alt || `Image ${index + 1}`}
-              width={800}
-              height={600}
-              className="w-full h-[300px] object-cover"
-              loading={index === 0 ? "eager" : "lazy"}
-              quality={85}
-              sizes="(max-width: 768px) 100vw, 800px"
-            />
-          </div>
+        {images.map(({ src, alt }, idx) => (
+          <Image
+            key={idx}
+            src={src}
+            alt={alt ?? `Image ${idx + 1}`}
+            width={800}
+            height={600}
+            className="w-[400px] h-[300px] object-cover"
+            loading={idx === 0 ? "eager" : "lazy"}
+            quality={85}
+            sizes="(max-width: 768px) 100vw, 400px"
+          />
         ))}
       </div>
 
       <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-transform duration-300 hover:scale-105"
-        aria-label="Previous image"
+        aria-label="Previous Image"
+        onClick={goToPrev}
+        className="absolute top-1/2 left-4 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-colors transition-transform duration-300 hover:scale-105 cursor-pointer"
       >
         <FaArrowLeft />
       </button>
       <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-transform duration-300 hover:scale-105"
-        aria-label="Next image"
+        aria-label="Next Image"
+        onClick={goToNext}
+        className="absolute top-1/2 right-4 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-colors transition-transform duration-300 hover:scale-105 cursor-pointer"
       >
         <FaArrowRight />
       </button>

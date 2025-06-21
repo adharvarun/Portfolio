@@ -11,6 +11,7 @@ import ReturnLoading from './returnLoading';
 import { useNavigationState } from '@/hooks/useNavigationState';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
+import { ArrowLeft } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -72,19 +73,7 @@ export default function ProjectsPage() {
             href="/" 
             className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8"
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="20" 
-              height="20" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
+            <ArrowLeft />
             Back to Home
           </Link>
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-10">Explore my Projects</h1>

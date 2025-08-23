@@ -34,7 +34,6 @@ export default function Home() {
       sessionStorage.removeItem('returningFromProjects');
       setTimeout(() => setIsLoading(false), 1000);
     }
-    // Responsive mobile detection
     const checkMobile = () => {
       if (typeof window !== 'undefined') {
         setIsMobile(window.innerWidth < 768);

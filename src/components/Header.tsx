@@ -18,7 +18,9 @@ export default function Header() {
         transition={{ duration: 0.7 }}
       >
         <div className="flex items-center gap-2 font-bold text-xl">
-          <Image src="/logo.png" alt="Adharv Arun" width={32} height={32} />
+          <Link href="/">
+            <Image src="/logo.png" alt="Adharv Arun" width={32} height={32} />
+          </Link>
         </div>
 
         <motion.ul
@@ -27,12 +29,12 @@ export default function Header() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <li><Link href="#about">About</Link></li>
-          <li><Link href="#services">Services</Link></li>
-          <li><Link href="#projects">Projects</Link></li>
-          <li><Link href="#experience">Experience</Link></li>
-          <li><Link href="#blog">Blog</Link></li>
-          <li><Link href="#contact">Contact</Link></li>
+          <li><Link href="/#about">About</Link></li>
+          <li><Link href="/#services">Services</Link></li>
+          <li><Link href="/#projects">Projects</Link></li>
+          <li><Link href="/#experience">Experience</Link></li>
+          <li><Link href="/#blog">Blog</Link></li>
+          <li><Link href="/#contact">Contact</Link></li>
         </motion.ul>
 
         <motion.div

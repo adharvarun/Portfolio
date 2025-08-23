@@ -12,6 +12,7 @@ import { useNavigationState } from '@/hooks/useNavigationState';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import { ArrowLeft } from 'lucide-react';
+import { FaArrowRight } from 'react-icons/fa6';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -76,7 +77,10 @@ export default function ProjectsPage() {
             <ArrowLeft />
             Back to Home
           </Link>
-          <h1 className="text-3xl md:text-4xl font-bold text-black mb-10">Explore my Projects</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-5">Explore my Projects</h1>
+          <Link href="/projects/status" className="text-blue-600 hover:text-blue-800 font-medium text-lg flex items-center gap-2 mb-10">
+            Check the status of my Deployed Projects <FaArrowRight />
+          </Link>
         </motion.div>
 
         <motion.div

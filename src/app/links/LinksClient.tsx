@@ -5,6 +5,7 @@ import Link from "next/link";
 import * as FaIcons from "react-icons/fa";
 import { motion } from "framer-motion";
 import Head from "next/head";
+import { FaArrowLeft } from "react-icons/fa6";
 
 interface Link {
   _id: string;
@@ -35,20 +36,7 @@ export default function LinksClient({ links }: LinksClientProps) {
               href="/"
               className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8 group"
             >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="20" 
-                height="20" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-                className="transform group-hover:-translate-x-1 transition-transform"
-              >
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-              </svg>
+              <FaArrowLeft />
               Back to Portfolio
             </Link>
 

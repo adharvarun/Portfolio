@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description: 'AI Engineer and Software Developer specializing in machine learning, web development, and innovative solutions.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: "Adharv Arun's Portfolio",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: 'Adharv Arun | AI Engineer & Software Developer',
     description: 'AI Engineer and Software Developer specializing in machine learning, web development, and innovative solutions.',
     creator: '@adharvarun',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   },
   category: 'technology',
   classification: 'Portfolio',
@@ -91,11 +91,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <link rel="shortcut icon" href="https://raw.githubusercontent.com/adharvarun/adharvarun/refs/heads/main/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="https://raw.githubusercontent.com/adharvarun/adharvarun/refs/heads/main/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
         <script

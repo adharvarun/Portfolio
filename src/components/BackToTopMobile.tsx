@@ -22,7 +22,7 @@ export default function BackToTopMobile() {
           exit={{ opacity: 0, y: 40 }}
           transition={{ duration: 0.3 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed z-50 bottom-24 right-4 bg-black text-white rounded-full p-4 shadow-lg flex items-center justify-center hover:bg-gray-800 focus:outline-none"
+          className="fixed z-50 bottom-44 right-4 bg-black text-white rounded-full p-4 shadow-lg flex items-center justify-center hover:bg-gray-800 focus:outline-none"
           aria-label="Back to Top"
         >
           <FaArrowUp className="w-5 h-5" />

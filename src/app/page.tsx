@@ -20,6 +20,7 @@ import QuoteMobile from '@/components/QuoteMobile';
 import FooterMobile from '@/components/FooterMobile';
 import ChatBot from '@/components/ChatBot';
 import BackToTopMobile from '@/components/BackToTopMobile';
+import TerminalButton from '@/components/TerminalButton'
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -66,23 +67,27 @@ export default function Home() {
         <QuoteMobile />
         <FooterMobile />
         <BackToTopMobile />
+        <TerminalButton />
         <ChatBot />
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <AboutMe />
-      <Services />
-      <Experience />
-      <ResumeSection />
-      <Portfolio />
-      <Blog />
-      <Testimonial />
-      <ContactCTA />
-      <Footer />
-    </main>
+    <>
+      <main className="min-h-screen">
+        <Hero />
+        <AboutMe />
+        <Services />
+        <Experience />
+        <ResumeSection />
+        <Portfolio />
+        <Blog />
+        <Testimonial />
+        <ContactCTA />
+        <Footer />
+      </main>
+      <TerminalButton />
+    </>
   );
 }

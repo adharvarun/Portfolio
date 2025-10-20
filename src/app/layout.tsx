@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import ConditionalHeader from '@/components/ConditionalHeader';
@@ -13,15 +13,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://adharvarun.com'),
+  metadataBase: new URL('https://adharvarun.tech'),
   title: {
-    default: 'Adharv Arun | AI Engineer & Software Developer',
+    default: 'Adharv Arun | AI Engineering & SDE Asprirant',
     template: '%s | Adharv Arun'
   },
-  description: 'AI Engineer and Software Developer specializing in machine learning, web development, and innovative solutions. Explore my portfolio of projects and experience.',
+  description: 'AI Engineering and SDE Aspirant specializing in machine learning, web development, and innovative solutions. Explore my portfolio of projects and experience.',
   keywords: [
-    'AI Engineer',
-    'Software Developer',
+    'AI Engineering Aspirant',
+    'Software Development Aspirant',
     'Machine Learning',
     'Web Development',
     'Portfolio',
@@ -50,8 +50,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://adharvarun.tech',
     siteName: "Adharv Arun's Portfolio",
-    title: 'Adharv Arun | AI Engineer & Software Developer',
-    description: 'AI Engineer and Software Developer specializing in machine learning, web development, and innovative solutions.',
+    title: 'Adharv Arun | AI Engineering & SDE Aspirant',
+    description: 'AI Engineering and SDE Aspirant specializing in machine learning, web development, and innovative solutions.',
     images: [
       {
         url: '/og-image.png',
@@ -63,24 +63,25 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Adharv Arun | AI Engineer & Software Developer',
-    description: 'AI Engineer and Software Developer specializing in machine learning, web development, and innovative solutions.',
+    title: 'Adharv Arun | AI Engineering & SDE Aspirant',
+    description: 'AI Engineering and SDE Aspirant specializing in machine learning, web development, and innovative solutions.',
     creator: '@adharvarun',
     images: ['/og-image.png'],
   },
   category: 'technology',
   classification: 'Portfolio',
   referrer: 'origin-when-cross-origin',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
@@ -105,11 +106,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Adharv Arun",
-              "url": "https://adharvarun.com",
-              "jobTitle": "AI Engineer & Software Developer",
+              "url": "https://adharvarun.tech",
+              "jobTitle": "AI Engineering & SDE Aspirant",
               "sameAs": [
                 "https://github.com/adharvarun",
-                "https://linkedin.com/in/adharvarun"
+                "https://linkedin.com/in/adharv-arun"
               ],
               "knowsAbout": [
                 "Machine Learning",

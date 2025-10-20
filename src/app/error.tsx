@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { logError } from '@/utils/errorHandling';
+import Link from 'next/link';
 
 export default function Error({
   error,
@@ -22,7 +23,7 @@ export default function Error({
         </h1>
         <p className="text-lg text-gray-700">
           We encountered an issue on our end. Don&apos;t worry, we&apos;re working on it! 
-          You can try again, or if it persists, contact support. 🚧
+          You can try again, or if it persists, submit an issue on <Link href="https://github.com/adharvarun/Portfolio">GitHub</Link>. 🚧
         </p>
         
         {process.env.NODE_ENV === 'development' && (
@@ -52,13 +53,13 @@ export default function Error({
             onClick={reset}
             className="px-8 py-3 bg-blue-500 text-white rounded-lg transition-all transform hover:bg-blue-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-lg"
           >
-            Try Again (I believe in you! 💪)
+            Try Again (Trust! 💪)
           </button>
           <button
             onClick={() => window.location.href = '/'}
             className="px-8 py-3 bg-gray-600 text-white rounded-lg transition-all transform hover:bg-gray-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 shadow-lg"
           >
-            Go Home (It&apos;s safe there 🏡)
+            Go Home (Try it out ig! 🏠) [If this is the homepage, please click this as it will most probably resolve the issue]
           </button>
         </div>
       </div>

@@ -204,7 +204,7 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="z-10 absolute bottom-16 right-0 w-96 max-h-[420px] flex flex-col bg-[#18181b] text-white border border-gray-800 rounded-xl shadow-xl"
+            className="z-70 absolute bottom-16 right-0 w-96 max-h-[420px] flex flex-col bg-[#18181b] text-white border border-gray-800 rounded-xl shadow-xl"
           >
             <div className="p-4 border-b border-gray-800 flex justify-between items-center">
               <div>

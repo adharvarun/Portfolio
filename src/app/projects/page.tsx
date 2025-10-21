@@ -12,7 +12,7 @@ import { useNavigationState } from '@/hooks/useNavigationState';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import { ArrowLeft } from 'lucide-react';
-import { FaArrowRight } from 'react-icons/fa6';
+import { FaArrowRight, FaYoutube } from 'react-icons/fa6';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -45,7 +45,7 @@ export default function ProjectsPage() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const data = await client.fetch(`*[_type == "projects"] | order(_createdAt desc){title, image, description, link, github, tags, technologies, slug}`);
+        const data = await client.fetch(`*[_type == "projects"] | order(_createdAt desc){title, image, description, link, github, demovideo, tags, technologies, slug}`);
         setProjects(data);
         setTimeout(() => {
           setIsLoading(false);
@@ -145,6 +145,15 @@ export default function ProjectsPage() {
                     className="text-gray-600 hover:text-gray-800 font-medium"
                   >
                     <FaGithub />
+                  </Link>
+                )}
+                {project.demovideo && (
+                  <Link 
+                    href={project.demovideo}
+                    target="_blank"
+                    className="text-red-600 hover:text-red-800 font-medium"
+                  >
+                    <FaYoutube />
                   </Link>
                 )}
               </div>

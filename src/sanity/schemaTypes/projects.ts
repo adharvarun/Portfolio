@@ -54,6 +54,11 @@ export default defineType({
       type: 'url',
     }),
     defineField({
+      name: 'demovideo',
+      title: 'Demo Video',
+      type: 'url',
+    }),
+    defineField({
       name: 'technologies',
       title: 'Technologies',
       type: 'array',

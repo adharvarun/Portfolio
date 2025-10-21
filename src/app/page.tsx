@@ -67,7 +67,6 @@ export default function Home() {
         <QuoteMobile />
         <FooterMobile />
         <BackToTopMobile />
-        <TerminalButton />
         <ChatBot />
       </div>
     );

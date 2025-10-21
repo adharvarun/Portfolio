@@ -60,7 +60,7 @@ async function fetchLinks(): Promise<LinkDoc[]> {
 
 async function fetchProjects(): Promise<ProjectDoc[]> {
   const query = `*[_type == "projects"] | order(_createdAt desc){
-    _id, title, description, link, github, democvideo, tags, technologies, image
+    _id, title, description, link, github, demovideo, tags, technologies, image
   }`;
   try {
     return await client.fetch(query);

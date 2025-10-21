@@ -23,6 +23,7 @@ type ProjectDoc = {
   description: string;
   link?: string;
   github?: string;
+  demovideo?: string;
   tags?: string[];
   technologies?: string[];
   image?: any;
@@ -59,7 +60,7 @@ async function fetchLinks(): Promise<LinkDoc[]> {
 
 async function fetchProjects(): Promise<ProjectDoc[]> {
   const query = `*[_type == "projects"] | order(_createdAt desc){
-    _id, title, description, link, github, tags, technologies, image
+    _id, title, description, link, github, democvideo, tags, technologies, image
   }`;
   try {
     return await client.fetch(query);
@@ -273,6 +274,9 @@ export default function TerminalPage() {
           }
           if (project.link) {
             lines.push(`   Live Demo: ${project.link}`);
+          }
+          if (project.demovideo) {
+            lines.push(`   Demo Video: ${project.demovideo}`);
           }
           lines.push('');
         });

@@ -61,7 +61,7 @@ export default function Hero() {
       >
         <div className="w-32 h-32 rounded-xl overflow-hidden mb-4 transition-transform duration-300 hover:scale-105 shadow-sm hover:shadow-md">
           <Image
-            src="/profile.jpg"
+            src="/profile1.jpg"
             alt="Adharv Arun - AI Engineer and Software Developer"
             width={128}
             height={128}

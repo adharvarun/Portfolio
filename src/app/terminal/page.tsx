@@ -70,19 +70,12 @@ async function fetchProjects(): Promise<ProjectDoc[]> {
 
 function getNeofetch(): string {
   const ascii = [
-    "    █████╗  ██╗  ██╗",
+    "    █████╗ ██╗  ██╗",
     "   ██╔══██╗██║ ██╔╝",
     "   ███████║█████╔╝ ",
     "   ██╔══██║██╔═██╗ ",
     "   ██║  ██║██║  ██╗",
     "   ╚═╝  ╚═╝╚═╝  ╚═╝",
-    "",
-    "    █████╗  ██╗  ██╗",
-    "   ██╔══██╗██║ ██╔╝",
-    "   ███████║█████╔╝ ",
-    "   ██╔══██║██╔═██╗ ",
-    "   ██║  ██║██║  ██╗",
-    "   ╚═╝  ╚═╝╚═╝  ╚═╝"
   ];
 
   const info = [
@@ -90,7 +83,7 @@ function getNeofetch(): string {
     '',
     'OS: Windows 11, iOS, Android, EndeavourOS, Ubuntu (WSL)',
     'Uptime: 15 years',
-    'Host: adharvsvictus',
+    `Host: ${PROMPT_HOST}`,
     'Kernel: 6.15.7-arch1-1, linux',
     'IDE: VSCode',
     'Terminal: Windows Terminal & Konsole',
@@ -124,6 +117,7 @@ function helpText(): string {
     '  home        - Return to the Homepage',
     '  matrix      - Enter the Matrix (fun easter egg)',
     '  hack        - Simulate hacking sequence',
+    '  sudo        - Find out what happens',
     '',
     'Keyboard shortcuts:',
     '  Tab         - Autocomplete commands',
@@ -155,7 +149,6 @@ export default function TerminalPage() {
 
   useEffect(() => {
     if (!isLoading) {
-      // Animated welcome sequence
       const welcomeSequence = async () => {
         setShowWelcome(true);
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -221,6 +214,9 @@ export default function TerminalPage() {
       case 'clear':
       case 'cls':
         setHistory([]);
+        break;
+      case 'sudo':
+        window.open('https://www.youtube.com/watch?v=lsySOZM2hWc', '_blank');
         break;
       case 'neofetch':
         print(getNeofetch());
@@ -335,7 +331,6 @@ export default function TerminalPage() {
   return (
     <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
       <div className="h-full w-full relative">
-        {/* Animated background particles */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(20)].map((_, i) => (
             <div
@@ -352,7 +347,6 @@ export default function TerminalPage() {
         </div>
         
         <div className="h-full w-full bg-black/80 backdrop-blur-sm border border-cyan-400/30 shadow-[0_0_50px_rgba(34,211,238,0.3)] flex flex-col relative z-10">
-          {/* Terminal header */}
           <div className="bg-gray-800/50 border-b border-cyan-400/30 px-4 py-2 flex items-center gap-2">
             <div className="flex gap-2">
               <button 

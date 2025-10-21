@@ -69,7 +69,7 @@ export default function LinksClient({ links }: LinksClientProps) {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="text-gray-500"
               >
-                Full Stack Developer
+                AI Engineering & SDE Aspirant
               </motion.p>
             </div>
 
@@ -90,7 +90,9 @@ export default function LinksClient({ links }: LinksClientProps) {
                       className="flex items-center justify-center w-full px-6 py-4 text-gray-800 bg-gray-50 hover:bg-gray-100 rounded-xl transition-all duration-200 border border-gray-200 hover:border-gray-300 hover:shadow-md group"
                     >
                       {Icon && <Icon className="w-5 h-5 mr-3 text-gray-600 group-hover:text-gray-900 transition-colors" />}
-                      <span className="font-medium">{link.title}</span>
+                      <span className="font-medium text-fluid whitespace-nowrap overflow-hidden text-ellipsis block">
+                        {link.title}
+                      </span>
                     </Link>
                   </motion.div>
                 );
@@ -112,6 +114,9 @@ export default function LinksClient({ links }: LinksClientProps) {
           }
           .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #d1d5db;
+          }
+          .text-fluid {
+            font-size: clamp(0.75rem, 2vw, 1rem);
           }
         `}</style>
       </div>

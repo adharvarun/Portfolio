@@ -20,7 +20,6 @@ import QuoteMobile from '@/components/QuoteMobile';
 import FooterMobile from '@/components/FooterMobile';
 import ChatBot from '@/components/ChatBot';
 import BackToTopMobile from '@/components/BackToTopMobile';
-import TerminalButton from '@/components/TerminalButton'
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -86,7 +85,6 @@ export default function Home() {
         <ContactCTA />
         <Footer />
       </main>
-      <TerminalButton />
     </>
   );
 }

@@ -3,13 +3,13 @@ import Link from 'next/link';
 import * as FaIcons from "react-icons/fa";
 import { client } from '@/sanity/lib/client';
 import ChatButton from "@/components/ChatBot";
+import TerminalButton from './TerminalButton';
 
 const contacts = await client.fetch(`*[_type == "contact"]`);
 
 export default function Footer() {
   return (
     <footer className="bg-black text-white py-12 px-4 relative">
-      {/* Desktop Layout */}
       <div className="hidden md:block max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col items-center md:items-start gap-2">
@@ -56,7 +56,6 @@ export default function Footer() {
         <div className="text-center text-gray-600 text-xs mt-8">Made with ❤️ by Adharv Arun &middot; {new Date().getFullYear()}</div>
       </div>
 
-      {/* Mobile Layout */}
       <div className="md:hidden flex flex-col items-center gap-8">
         <div className="flex flex-col items-center gap-2">
           <div className="flex items-center gap-2 font-bold text-xl">
@@ -84,6 +83,7 @@ export default function Footer() {
       </div>
 
       <ChatButton />
+      <TerminalButton />
     </footer>
   );
 }

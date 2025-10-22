@@ -218,6 +218,7 @@ export default function TerminalPage() {
         break;
       case 'sudo':
         window.open('https://www.youtube.com/watch?v=lsySOZM2hWc', '_blank');
+        print("Psyched! You don't have sudo privileges here. 😄");
         break;
       case 'neofetch':
         print(getNeofetch());

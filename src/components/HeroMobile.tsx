@@ -59,7 +59,7 @@ export default function HeroMobile() {
       >
         <div className="w-24 h-24 rounded-xl overflow-hidden mb-2 transition-transform duration-300 hover:scale-105 shadow-sm hover:shadow-md">
           <Image
-            src="/profile.jpg"
+            src="/profile1.jpg"
             alt="Adharv Arun - AI Engineer and Software Developer"
             width={96}
             height={96}

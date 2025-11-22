@@ -2,7 +2,7 @@
 
 import { client } from '@/sanity/lib/client';
 import ImageSlider from '@/components/ImageSlider';
-import * as FaIcons from 'react-icons/fa';
+import * as FaIcons from 'react-icons/fa6';
 import Skills from './Skills';
 import { useEffect, useState } from 'react';
 import ScrollAnimation from './ScrollAnimation';

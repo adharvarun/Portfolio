@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import * as FaIcons from "react-icons/fa";
+import * as FaIcons from "react-icons/fa6";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { FaArrowLeft } from "react-icons/fa6";

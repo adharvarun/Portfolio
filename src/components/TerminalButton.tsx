@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaTerminal } from 'react-icons/fa';
+import { FaTerminal } from 'react-icons/fa6';
 
 export default function TerminalButton() {
   return (

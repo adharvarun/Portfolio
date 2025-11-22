@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
-import { FaGithub, FaLink } from 'react-icons/fa';
+import { FaGithub, FaLink } from 'react-icons/fa6';
 import ScrollAnimation from './ScrollAnimation';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';

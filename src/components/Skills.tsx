@@ -2,7 +2,7 @@
 
 import { client } from '@/sanity/lib/client';
 import { SiJavascript, SiTypescript, SiHtml5, SiCss3, SiPhp, SiAstro, SiNuxtdotjs, SiSvelte, SiTailwindcss, SiReact, SiSass, SiExpress, SiFastify, SiPrisma, SiAppwrite, SiVuedotjs, SiNodedotjs, SiArduino } from 'react-icons/si';
-import { FaCode } from 'react-icons/fa';
+import { FaCode } from 'react-icons/fa6';
 import { Plus } from 'lucide-react';
 import ScrollAnimation from './ScrollAnimation';
 import { useEffect, useState } from 'react';

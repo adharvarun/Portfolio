@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaArrowUp } from 'react-icons/fa';
+import { FaArrowUp } from 'react-icons/fa6';
 
 export default function BackToTopMobile() {
   const [show, setShow] = useState(false);

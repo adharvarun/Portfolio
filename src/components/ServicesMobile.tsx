@@ -1,4 +1,4 @@
-import { FaRobot, FaCode, FaCloud, FaChartLine } from 'react-icons/fa';
+import { FaRobot, FaCode, FaCloud, FaChartLine } from 'react-icons/fa6';
 import ScrollAnimation from './ScrollAnimation';
 
 const services = [

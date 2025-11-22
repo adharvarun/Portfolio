@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
-import { FaGithub, FaLink } from 'react-icons/fa';
+import { FaGithub, FaLink } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
 import Loading from './loading';
 import ReturnLoading from './returnLoading';

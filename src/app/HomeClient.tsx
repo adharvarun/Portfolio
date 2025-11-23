@@ -22,14 +22,19 @@ import ChatBot from '@/components/ChatBot';
 import BackToTopMobile from '@/components/BackToTopMobile';
 import { useRouter } from 'next/navigation';
 
-type Props = {
-  posts: any[];
+type Post = {
+  title: string;
+  description?: string;
+  link?: string;
+  pubDate?: string;
+  author?: string;
 };
 
-export default function HomeClient({ posts }: Props) {
+export default function HomeClient() {
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState<null | boolean>(null);
   const router = useRouter();
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const isReturning = sessionStorage.getItem('returningFromProjects');
@@ -46,6 +51,33 @@ export default function HomeClient({ posts }: Props) {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Fetch RSS on the client to avoid server-side XML parsing errors during prerender
+    const fetchClientRSS = async () => {
+      try {
+        const url = '/api/rss';
+        const res = await fetch(url);
+        if (!res.ok) return;
+        const xmlText = await res.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(xmlText, 'text/xml');
+        const items = Array.from(doc.querySelectorAll('item')).slice(0, 3).map((item) => ({
+          title: item.querySelector('title')?.textContent || '',
+          description: item.querySelector('content\\:encoded')?.textContent || item.querySelector('description')?.textContent || '',
+          link: item.querySelector('link')?.textContent || undefined,
+          pubDate: item.querySelector('pubDate')?.textContent || undefined,
+          author: item.querySelector('dc\\:creator')?.textContent || item.querySelector('author')?.textContent || undefined,
+        }));
+        setPosts(items);
+      } catch (e: any) {
+        // fail silently — blog section will simply show no posts
+        console.error('Client RSS fetch failed', e?.message || e);
+      }
+    };
+
+    fetchClientRSS();
   }, []);
 
   if (isLoading || isMobile === null) {

@@ -21,6 +21,7 @@ import FooterMobile from '@/components/FooterMobile';
 import ChatBot from '@/components/ChatBot';
 import BackToTopMobile from '@/components/BackToTopMobile';
 import { useRouter } from 'next/navigation';
+import { fetchRSS } from '@/components/fetchRSS';
 
 type Post = {
   title: string;
@@ -54,30 +55,11 @@ export default function HomeClient() {
   }, []);
 
   useEffect(() => {
-    // Fetch RSS on the client to avoid server-side XML parsing errors during prerender
-    const fetchClientRSS = async () => {
-      try {
-        const url = '/api/rss';
-        const res = await fetch(url);
-        if (!res.ok) return;
-        const xmlText = await res.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(xmlText, 'text/xml');
-        const items = Array.from(doc.querySelectorAll('item')).slice(0, 3).map((item) => ({
-          title: item.querySelector('title')?.textContent || '',
-          description: item.querySelector('content\\:encoded')?.textContent || item.querySelector('description')?.textContent || '',
-          link: item.querySelector('link')?.textContent || undefined,
-          pubDate: item.querySelector('pubDate')?.textContent || undefined,
-          author: item.querySelector('dc\\:creator')?.textContent || item.querySelector('author')?.textContent || undefined,
-        }));
-        setPosts(items);
-      } catch (e: any) {
-        // fail silently — blog section will simply show no posts
-        console.error('Client RSS fetch failed', e?.message || e);
-      }
+    const load = async () => {
+      const items = await fetchRSS();
+      setPosts(items);
     };
-
-    fetchClientRSS();
+    load();
   }, []);
 
   if (isLoading || isMobile === null) {

@@ -1,8 +1,6 @@
 'use client';
 
-import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
-import { urlFor } from '@/sanity/lib/image';
 import Link from 'next/link';
 import { FaGithub, FaLink } from 'react-icons/fa6';
 import ScrollAnimation from './ScrollAnimation';

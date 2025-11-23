@@ -3,7 +3,7 @@ import Link from 'next/link';
 import * as FaIcons from "react-icons/fa6";
 import { client } from '@/sanity/lib/client';
 import ChatButton from "@/components/ChatBot";
-import TerminalButton from './TerminalButton';
+import TerminalButton from '@/components/TerminalButton';
 
 const contacts = await client.fetch(`*[_type == "contact"]`);
 

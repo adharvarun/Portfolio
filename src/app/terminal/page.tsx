@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { client } from '@/sanity/lib/client';
 
+/* ================= TYPES ================= */
+
 type AboutDoc = {
   title?: string;
   shortDescription?: string;
@@ -38,10 +40,10 @@ type HistoryItem = {
 const PROMPT_USER = 'visitor';
 const PROMPT_HOST = 'adharvarun.tech';
 
+/* ================= DATA ================= */
+
 async function fetchAbout(): Promise<AboutDoc | null> {
-  const query = `*[_type == "about"][0]{
-    title, shortDescription, description, titles, skills
-  }`;
+  const query = `*[_type == "about"][0]{ title, shortDescription, description, titles, skills }`;
   try {
     return await client.fetch(query);
   } catch {
@@ -68,6 +70,8 @@ async function fetchProjects(): Promise<ProjectDoc[]> {
     return [];
   }
 }
+
+/* ================= ASCII ================= */
 
 function getNeofetch(): string {
   const ascii = [
@@ -98,9 +102,7 @@ function getNeofetch(): string {
   const rows = Math.max(ascii.length, info.length);
   const lines: string[] = [];
   for (let i = 0; i < rows; i++) {
-    const left = ascii[i] ?? '';
-    const right = info[i] ?? '';
-    lines.push(left.padEnd(leftWidth, ' ') + right);
+    lines.push((ascii[i] ?? '').padEnd(leftWidth) + (info[i] ?? ''));
   }
   return lines.join('\n');
 }
@@ -108,24 +110,54 @@ function getNeofetch(): string {
 function helpText(): string {
   return [
     'Available commands:',
-    '  help        - Show this help',
-    '  neofetch    - Show personal info with ASCII logo',
-    '  whoami      - Display the current user',
-    '  about       - Show about information',
-    '  links       - List social and external links',
-    '  projects    - View my coding projects from Sanity',
-    '  clear       - Clear the terminal screen (alias: cls)',
-    '  home        - Return to the Homepage',
-    '  matrix      - Enter the Matrix (fun easter egg)',
-    '  hack        - Simulate hacking sequence',
-    '  sudo        - Find out what happens',
+    '  help         - Show this help',
+    '  neofetch     - Show personal info',
+    '  whoami       - Display the current user',
+    '  about        - About me',
+    '  links        - Social links',
+    '  projects     - Portfolio projects',
+    '  resume       - Open resume',
+    '  certificates - View all certificates',
+    '  contact      - Contact info',
+    '  echo <x>     - Print text',
+    '  date         - Current date/time',
+    '  fortune      - Random wisdom',
+    '  cowsay <x>   - Make the cow talk',
+    '  clear        - Clear terminal (cls)',
     '',
-    'Keyboard shortcuts:',
-    '  Tab         - Autocomplete commands',
-    '  ↑/↓         - Navigate command history',
+    'Shortcuts:',
+    '  Tab         - Autocomplete',
+    '  ↑/↓         - Command history',
     '  Ctrl + L    - Clear terminal',
   ].join('\n');
 }
+
+/* ================= FUN ================= */
+
+const fortunes = [
+  "Good code is boring code.",
+  "You will refactor this later.",
+  "Ship early. Fix later.",
+  "Works on my machine.",
+  "Simplicity is underrated.",
+];
+
+function cowsay(text: string) {
+  const msg = text || "moo";
+  const border = "-".repeat(msg.length + 2);
+  return [
+    ` ${border}`,
+    `< ${msg} >`,
+    ` ${border}`,
+    "        \\   ^__^",
+    "         \\  (oo)\\_______",
+    "            (__)\\       )\\/\\",
+    "                ||----w |",
+    "                ||     ||",
+  ].join('\n');
+}
+
+/* ================= COMPONENT ================= */
 
 export default function TerminalPage() {
   const [history, setHistory] = useState<HistoryItem[]>([]);
@@ -136,8 +168,9 @@ export default function TerminalPage() {
   const [links, setLinks] = useState<LinkDoc[]>([]);
   const [projects, setProjects] = useState<ProjectDoc[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [showWelcome, setShowWelcome] = useState(false);
   const bottomRef = useRef<HTMLDivElement | null>(null);
+
+  const prompt = useMemo(() => `[${PROMPT_USER}@${PROMPT_HOST} ~]# `, []);
 
   useEffect(() => {
     Promise.all([fetchAbout(), fetchLinks(), fetchProjects()]).then(([a, l, p]) => {
@@ -145,180 +178,65 @@ export default function TerminalPage() {
       setLinks(l);
       setProjects(p);
       setIsLoading(false);
+      setHistory([
+        {
+          type: 'output',
+          content: "Welcome to the Terminal\nType 'help' to get started.\n"
+        }
+      ]);
     });
   }, []);
-
-  useEffect(() => {
-    if (!isLoading) {
-      const welcomeSequence = async () => {
-        setShowWelcome(true);
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        const welcomeText = "Welcome to Adharv's Terminal";
-        await typeText(welcomeText, 50);
-        
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        const helpText = "Type 'help' to see available commands or try 'matrix' for fun!";
-        await typeText(helpText, 30);
-      };
-      
-      welcomeSequence();
-    }
-  }, [isLoading]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [history]);
 
-  const prompt = useMemo(() => `[${PROMPT_USER}@${PROMPT_HOST} ~]# `, []);
-
-  async function typeText(text: string, speed: number = 50) {
-    setHistory(h => [...h, { type: 'output', content: '', isTyping: true }]);
-    
-    for (let i = 0; i <= text.length; i++) {
-      const currentText = text.slice(0, i);
-      setHistory(h => {
-        const newHistory = [...h];
-        newHistory[newHistory.length - 1] = { 
-          type: 'output', 
-          content: currentText,
-          isTyping: i < text.length
-        };
-        return newHistory;
-      });
-      
-      if (i < text.length) {
-        await new Promise(resolve => setTimeout(resolve, speed));
-      }
-    }
-  }
-
   function print(output: string) {
     setHistory(h => [...h, { type: 'output', content: output }]);
   }
 
+  const COMMANDS = [
+    'help','neofetch','whoami','about','links','projects',
+    'clear','cls','home','echo','date','fortune','cowsay','resume','contact', 'certificates'
+  ];
+
   function runCommand(raw: string) {
     const line = raw.trim();
     if (!line) return;
+
     setHistory(h => [...h, { type: 'input', content: prompt + line }]);
     setCommandHistory(h => [...h, line]);
     setHistoryIndex(null);
 
     const [cmd, ...rest] = line.split(' ');
-    const arg = rest.join(' ').trim();
+    const arg = rest.join(' ');
 
     switch (cmd.toLowerCase()) {
-      case 'help':
-        print(helpText());
-        break;
+      case 'help': print(helpText()); break;
       case 'clear':
-      case 'cls':
-        setHistory([]);
-        break;
-      case 'sudo':
-        window.open('https://www.youtube.com/watch?v=lsySOZM2hWc', '_blank');
-        print("Psyched! You don't have sudo privileges here. 😄");
-        break;
-      case 'neofetch':
-        print(getNeofetch());
-        break;
-      case 'whoami':
-        print(PROMPT_USER);
-        break;
-      case 'home':
-        window.location.href = "/";
-        print("Returning to Homepage...")
-        break;
+      case 'cls': setHistory([]); break;
+      case 'whoami': print(PROMPT_USER); break;
+      case 'home': window.location.href = "/"; break;
+      case 'neofetch': print(getNeofetch()); break;
+      case 'echo': print(arg); break;
+      case 'date': print(new Date().toString()); break;
+      case 'fortune': print(fortunes[Math.floor(Math.random() * fortunes.length)]); break;
+      case 'cowsay': print(cowsay(arg)); break;
+      case 'resume': window.open('https://drive.google.com/file/d/1qxLp8dgP4uWqXQVdmsR8Ca4Ydgl715_S/view', '_blank'); break;
+      case 'contact': print('Email: mailto:adharvarun.10@gmail.com\nLinkedIn: https://www.linkedin.com/in/adharv-arun'); break;
       case 'about': {
-        if (!about) {
-          print('About data is not available yet.');
-          break;
-        }
-        const lines: string[] = [];
-        if (about.title) lines.push(`Title: ${about.title}`);
+        if (!about) return;
+        const lines = [];
+        if (about.title) lines.push(about.title);
         if (about.shortDescription) lines.push(about.shortDescription);
         if (about.description) lines.push('', about.description);
-        if (about.titles?.length) lines.push('', 'Roles:', ...about.titles.map(t => `- ${t}`));
-        if (about.skills?.length) lines.push('', 'Skills:', ...about.skills.map(s => `- ${s}`));
         print(lines.join('\n'));
         break;
       }
-      case 'links': {
-        if (!links.length) {
-          print('No links found.');
-          break;
-        }
-        const lines = links.map(l => `- ${l.title}: ${l.url}`);
-        print(lines.join('\n'));
-        break;
-      }
-      case 'projects': {
-        if (!projects.length) {
-          print('No projects found.');
-          break;
-        }
-        const lines: string[] = [];
-        lines.push('My Projects:');
-        lines.push('');
-        projects.forEach((project, index) => {
-          lines.push(`${index + 1}. ${project.title}`);
-          lines.push(`   Description: ${project.description}`);
-          if (project.technologies?.length) {
-            lines.push(`   Technologies: ${project.technologies.join(', ')}`);
-          }
-          if (project.tags?.length) {
-            lines.push(`   Tags: ${project.tags.join(', ')}`);
-          }
-          if (project.github) {
-            lines.push(`   GitHub: ${project.github}`);
-          }
-          if (project.link) {
-            lines.push(`   Live Demo: ${project.link}`);
-          }
-          if (project.demovideo) {
-            lines.push(`   Demo Video: ${project.demovideo}`);
-          }
-          lines.push('');
-        });
-        print(lines.join('\n'));
-        break;
-      }
-      case 'matrix': {
-        const matrixLines = [
-          '01001000 01100101 01101100 01101100 01101111',
-          '01010111 01100101 01101100 01100011 01101111 01101101 01100101',
-          '01010100 01101111',
-          '01010100 01101000 01100101',
-          '01001101 01100001 01110100 01110010 01101001 01111000',
-          '',
-          '🌊 You have entered the Matrix... 🌊',
-          'Reality is just a simulation.',
-          'Wake up, Neo...',
-          '',
-          'Type "clear" to exit the Matrix.'
-        ];
-        print(matrixLines.join('\n'));
-        break;
-      }
-      case 'hack': {
-        const hackLines = [
-          'Initiating hack sequence...',
-          'Connecting to target...',
-          'Bypassing firewall...',
-          'Accessing mainframe...',
-          'Downloading data...',
-          'Installing backdoor...',
-          'Hack complete! 🎯',
-          '',
-          'Just kidding! 😄 This is just for fun.',
-          'I\'m a legitimate developer, not a hacker!'
-        ];
-        print(hackLines.join('\n'));
-        break;
-      }
-      default:
-        print(`Command not found: ${cmd}. Type 'help' for available commands.`);
+      case 'links': print(links.map(l => `- ${l.title}: ${l.url}`).join('\n')); break;
+      case 'projects': print(projects.map((p,i)=>`${i+1}. ${p.title}\n   ${p.description}`).join('\n\n')); break;
+      case 'certificates': window.open('https://sites.google.com/view/adharv-arun-certificates', '_blank'); break;
+      default: print(`Command not found: ${cmd}`); break;
     }
   }
 

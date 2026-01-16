@@ -32,5 +32,10 @@ export default defineType({
       title: 'Description',
       type: 'text',
     }),
+    defineField({
+      name: 'duration',
+      title: 'Duration',
+      type: 'text',
+    }),
   ],
 })

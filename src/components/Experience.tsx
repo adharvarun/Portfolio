@@ -15,7 +15,8 @@ export default function Experience() {
           company,
           startYear,
           endYear,
-          description
+          description,
+          duration
         }
       `);
       setExperiences(data);
@@ -52,8 +53,13 @@ export default function Experience() {
                     <div className="font-semibold text-lg text-black">{exp.title} at {exp.company}</div>
                     <div className="text-gray-500 text-sm max-w-xl">{exp.description}</div>
                   </div>
-                  <div className="text-2xl font-bold text-gray-700 md:text-right min-w-[120px]">
-                    {exp.startYear} - {exp.endYear === 'Now' ? 'Present' : exp.endYear}
+                  <div className="flex flex-col items-end text-right min-w-[140px]">
+                    <div className="text-2xl font-bold text-gray-700 md:text-right min-w-[120px]">
+                      {exp.startYear} - {exp.endYear === 'Now' ? 'Present' : exp.endYear}
+                    </div>
+                    <div>
+                      <div className="text-gray-400 text-sm mt-2 md:mt-0">{exp.duration}</div>
+                    </div>
                   </div>
                 </div>
               </ScrollAnimation>

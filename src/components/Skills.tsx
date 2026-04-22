@@ -1,7 +1,7 @@
 'use client';
 
 import { client } from '@/sanity/lib/client';
-import { SiJavascript, SiTypescript, SiHtml5, SiCss, SiPhp, SiAstro, SiNuxt, SiSvelte, SiTailwindcss, SiReact, SiSass, SiExpress, SiFastify, SiPrisma, SiAppwrite, SiVuedotjs, SiNodedotjs, SiArduino } from 'react-icons/si';
+import { SiJavascript, SiTypescript, SiHtml5, SiCss3, SiPhp, SiAstro, SiNuxtdotjs, SiSvelte, SiTailwindcss, SiReact, SiSass, SiExpress, SiFastify, SiPrisma, SiAppwrite, SiVuedotjs, SiNodedotjs, SiArduino } from 'react-icons/si';
 import { FaCode } from 'react-icons/fa6';
 import { Plus } from 'lucide-react';
 import ScrollAnimation from './ScrollAnimation';
@@ -12,11 +12,11 @@ const iconMap: Record<string, any> = {
   'typescript': SiTypescript,
   'html': SiHtml5,
   'html5': SiHtml5,
-  'css': SiCss,
+  'css': SiCss3,
   'php': SiPhp,
   'astro': SiAstro,
-  'nuxt': SiNuxt,
-  'nuxtjs': SiNuxt,
+  'nuxt': SiNuxtdotjs,
+  'nuxtjs': SiNuxtdotjs,
   'svelte': SiSvelte,
   'tailwind css': SiTailwindcss,
   'tailwindcss': SiTailwindcss,

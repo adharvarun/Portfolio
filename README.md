@@ -26,7 +26,7 @@ A modern, responsive portfolio website built with Next.js 14, showcasing my work
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/adharvarun/Portfolio.git
+git clone https://github.com/yourusername/portfolio.git
 cd portfolio
 ```
 

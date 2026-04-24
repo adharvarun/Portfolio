@@ -71,13 +71,13 @@ export default function Hero() {
             quality={90}
           />
         </div>
-        <div className="text-center text-gray-600 max-h-[10rem] overflow-y-auto">
+        <div className="text-center text-gray-600 max-h-[15rem] overflow-y-auto">
           <p className="text-lg font-semibold mb-2">Hey There 👋! I&apos;m Adharv</p>
           {about?.shortDescription ? (
             <p>{about.shortDescription}</p>
           ) : (
             <p>Loading...</p>
-          )}          
+          )}      
         </div>
       </motion.div>
     </section>

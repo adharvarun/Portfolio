@@ -6,7 +6,7 @@ import * as FaIcons from 'react-icons/fa6';
 import Skills from './Skills';
 import { useEffect, useState } from 'react';
 import ScrollAnimation from './ScrollAnimation';
-import AnimatedCounter from './AnimatedCounter';
+import Link from 'next/link';
 
 export default function AboutMe() {
   const [about, setAbout] = useState<any>(null);
@@ -52,10 +52,11 @@ export default function AboutMe() {
             </div>
           </h2>
           <ScrollAnimation direction="left" delay={0.2}>
-            <p className="text-gray-500 max-w-md mb-6">{about?.description}</p>
+            <p className="text-gray-500 max-w-md mb-5">{about?.description}</p>
           </ScrollAnimation>
+          <Link href='https://resume.adharvarun.tech' target='_blank' className='bg-black text-white px-8 py-3 rounded-full font-semibold text-xs hover:bg-gray-900 transition'>View my Professional Portfolio</Link> 
           <ScrollAnimation direction="left" delay={0.3}>
-            <div className="flex gap-3 mt-2">
+            <div className="flex gap-3 mt-10">
               {contacts.map((contact: any, index: number) => {
                 const Icon = (FaIcons as any)[contact.icon];
                 return (
@@ -70,7 +71,7 @@ export default function AboutMe() {
                     </a>
                   </ScrollAnimation>
                 );
-              })}
+              })} 
             </div>
           </ScrollAnimation>
           <Skills />
@@ -98,7 +99,7 @@ export default function AboutMe() {
                 <div className="text-3xl font-bold text-black">6+</div>
                 <div className="text-gray-500 text-sm">Years <br /> Experience</div>
               </div>
-            </ScrollAnimation>
+            </ScrollAnimation>  
           </div>
         </ScrollAnimation>
       </div>

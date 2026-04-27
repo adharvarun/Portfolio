@@ -54,7 +54,7 @@ export default function AboutMe() {
           <ScrollAnimation direction="left" delay={0.2}>
             <p className="text-gray-500 max-w-md mb-5">{about?.description}</p>
           </ScrollAnimation>
-          <Link href='https://resume.adharvarun.tech' target='_blank' className='bg-black text-white px-8 py-3 rounded-full font-semibold text-xs hover:bg-gray-900 transition'>View my Professional Portfolio</Link> 
+          <Link href='https://resume.adharvarun.tech' target='_blank' className='bg-black text-white px-6 py-2 rounded-full font-semibold text-sm hover:bg-gray-900 transition'>View my Professional Portfolio</Link> 
           <ScrollAnimation direction="left" delay={0.3}>
             <div className="flex gap-3 mt-10">
               {contacts.map((contact: any, index: number) => {

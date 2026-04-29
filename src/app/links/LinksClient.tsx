@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import * as FaIcons from "react-icons/fa6";
+import * as SiIcons from "react-icons/si";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { FaArrowLeft } from "react-icons/fa6";
@@ -17,6 +18,11 @@ interface Link {
 interface LinksClientProps {
   links: Link[];
 }
+
+const Icons = {
+  ...FaIcons,
+  ...SiIcons,
+};
 
 export default function LinksClient({ links }: LinksClientProps) {
   return (
@@ -75,7 +81,7 @@ export default function LinksClient({ links }: LinksClientProps) {
 
             <div className="space-y-4 max-h-[calc(100vh-400px)] overflow-y-auto pr-2 custom-scrollbar">
               {links.map((link, index) => {
-                const Icon = (FaIcons as any)[link.icon];
+                const Icon = (Icons as any)[link.icon];
                 return (
                   <motion.div
                     key={link._id}
